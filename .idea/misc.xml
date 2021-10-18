@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3828125" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/search_frag_background.xml" value="0.3828125" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_test1.xml" value="0.36666666666666664" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_test2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/search_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/menu/search_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_test1.xml" value="0.16964376074851836" />
         <entry key="app/src/main/res/layout/fragment_test2.xml" value="0.24534718816444578" />
@@ -10,7 +18,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
