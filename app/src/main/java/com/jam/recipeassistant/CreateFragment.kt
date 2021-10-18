@@ -6,18 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.jam.recipeassistant.databinding.FragmentTest2Binding
-import com.jam.recipeassistant.databinding.FragmentTest3Binding
+import com.jam.recipeassistant.databinding.FragmentCreateBinding
 
-class TestFragment3 : Fragment() {
+class CreateFragment : Fragment() {
 
-    lateinit var binding: FragmentTest3Binding
+    lateinit var binding: FragmentCreateBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTest3Binding.inflate(this.layoutInflater, container, false)
+        binding = FragmentCreateBinding.inflate(this.layoutInflater, container, false)
 
         binding.screen2btn.setOnClickListener {
             viewScreen2()

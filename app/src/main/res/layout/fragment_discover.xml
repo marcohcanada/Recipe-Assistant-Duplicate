@@ -13,7 +13,7 @@
         android:layout_marginTop="1dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".TestFragment1">
+        tools:context=".DiscoverFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

@@ -6,17 +6,22 @@ import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 
-import com.jam.recipeassistant.databinding.FragmentTest2Binding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.jam.recipeassistant.databinding.FragmentRecipesBinding
 
-class TestFragment2 : Fragment() {
 
-    lateinit var binding: FragmentTest2Binding
+class RecipesFragment : Fragment() {
+
+    lateinit var binding: FragmentRecipesBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTest2Binding.inflate(this.layoutInflater, container, false)
+        binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
 
         /*binding.screen3btn.setOnClickListener {
             viewScreen3()

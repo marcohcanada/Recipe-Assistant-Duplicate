@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/testFragment1"
-        android:name="com.jam.recipeassistant.TestFragment1"
+        android:name="com.jam.recipeassistant.DiscoverFragment"
         android:label="TestFragment1" >
         <action
             android:id="@+id/action_testFragment1_to_testFragment2"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/testFragment2"
-        android:name="com.jam.recipeassistant.TestFragment2"
+        android:name="com.jam.recipeassistant.RecipesFragment"
         android:label="TestFragment2" >
         <action
             android:id="@+id/action_testFragment2_to_testFragment3"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/testFragment3"
-        android:name="com.jam.recipeassistant.TestFragment3"
+        android:name="com.jam.recipeassistant.CreateFragment"
         android:label="TestFragment3" >
         <action
             android:id="@+id/action_testFragment3_to_testFragment2"
