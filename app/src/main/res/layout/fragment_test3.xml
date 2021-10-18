@@ -37,5 +37,11 @@
             android:layout_weight="2"
             android:text="Go back to Screen 1" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecipeHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/single_recipe_row_layout" />
+
     </LinearLayout>
 </layout>
