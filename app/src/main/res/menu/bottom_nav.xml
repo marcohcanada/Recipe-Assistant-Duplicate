@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Discover"
+    <item
+        android:id="@+id/testFragment1"
+        android:title="Discover"
         android:icon="@drawable/discover_icon"/>
-    <item android:title="Recipes"
+    <item
+        android:id="@+id/testFragment2"
+        android:title="Recipes"
         android:icon="@drawable/recipes_icon"/>
-    <item android:title="Create"
+    <item
+        android:id="@+id/testFragment3"
+        android:title="Create"
         android:icon="@drawable/create_icon"/>
-    <item android:title="My List"
+    <item
+        android:id="@+id/nav_my_list"
+        android:title="My List"
         android:icon="@drawable/my_list_icon"/>
-    <item android:title="Settings"
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
         android:icon="@drawable/settings_icon"/>
 </menu>

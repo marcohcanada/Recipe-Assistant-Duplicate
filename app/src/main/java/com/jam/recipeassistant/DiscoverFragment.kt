@@ -6,34 +6,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.jam.recipeassistant.databinding.FragmentTest2Binding
-import com.jam.recipeassistant.databinding.FragmentTest3Binding
+import com.jam.recipeassistant.databinding.FragmentDiscoverBinding
 
-class TestFragment3 : Fragment() {
+class DiscoverFragment : Fragment() {
 
-    lateinit var binding: FragmentTest3Binding
+    lateinit var binding: FragmentDiscoverBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTest3Binding.inflate(this.layoutInflater, container, false)
+        binding = FragmentDiscoverBinding.inflate(this.layoutInflater, container, false)
 
         binding.screen2btn.setOnClickListener {
             viewScreen2()
         }
-        binding.screen1btn.setOnClickListener {
-            viewScreen1()
+
+        binding.screen3btn.setOnClickListener {
+            viewScreen3()
         }
 
         return binding.root
     }
 
     fun viewScreen2(){
-        findNavController().navigate(R.id.action_testFragment3_to_testFragment2)
+        findNavController().navigate(R.id.action_testFragment1_to_testFragment2)
     }
 
-    fun viewScreen1(){
-        findNavController().navigate(R.id.action_testFragment3_to_testFragment1)
+    fun viewScreen3(){
+        findNavController().navigate(R.id.action_testFragment1_to_testFragment3)
     }
 }

@@ -13,21 +13,21 @@
         android:layout_marginTop="1dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".TestFragment2">
+        tools:context=".CreateFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Screen 2" />
+            android:text="Screen 3" />
 
         <Button
-            android:id="@+id/screen3btn"
+            android:id="@+id/screen2btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="2"
-            android:text="Go to Screen 3" />
+            android:text="Go to back Screen 2" />
 
         <Button
             android:id="@+id/screen1btn"
