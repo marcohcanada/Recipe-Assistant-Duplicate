@@ -11,6 +11,9 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
         applicationId "com.jam.recipeassistant"
         minSdkVersion 21
         targetSdkVersion 30
@@ -63,4 +66,8 @@ dependencies {
 
     // coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    //admob
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+    
 }
