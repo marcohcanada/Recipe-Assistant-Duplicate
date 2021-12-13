@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="appId">ca-app-pub-3413865217378918~5377590854</string>
-    <string name="banner">ca-app-pub-3940256099942544/2934735716</string>
+    <string name="banner">ca-app-pub-3413865217378918/5233410183</string>
+    <string name="Interstitial">ca-app-pub-3413865217378918/8810828587</string>
 </resources>
