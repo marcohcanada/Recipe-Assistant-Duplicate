@@ -22,6 +22,15 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph"/>
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="BANNER"
+            app:adUnitId="@string/banner"></com.google.android.gms.ads.AdView>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_view"
             android:layout_width="match_parent"
