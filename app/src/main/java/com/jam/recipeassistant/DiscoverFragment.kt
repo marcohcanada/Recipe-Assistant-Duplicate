@@ -11,6 +11,7 @@ import com.jam.recipeassistant.databinding.FragmentDiscoverBinding
 class DiscoverFragment : Fragment() {
 
     lateinit var binding: FragmentDiscoverBinding
+    lateinit var manager: DialogflowManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,9 +19,10 @@ class DiscoverFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDiscoverBinding.inflate(this.layoutInflater, container, false)
+        manager = DialogflowManager()
+        manager.initAssistant(this.requireContext())
 
         binding.screen2btn.setOnClickListener {
-            viewScreen2()
         }
 
         binding.screen3btn.setOnClickListener {
@@ -33,6 +35,7 @@ class DiscoverFragment : Fragment() {
     fun viewScreen2(){
         findNavController().navigate(R.id.action_testFragment1_to_testFragment2)
     }
+
 
     fun viewScreen3(){
         findNavController().navigate(R.id.action_testFragment1_to_testFragment3)
