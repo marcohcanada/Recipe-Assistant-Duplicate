@@ -9,41 +9,85 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="655dp"
+        android:layout_gravity="top"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="1dp"
-        android:layout_gravity="center"
         android:orientation="vertical"
         tools:context=".CreateFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <EditText
+            android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Screen 3" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Recipe Name"
+            android:inputType="textPersonName" />
+
+
+        <ScrollView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/quantity"
+                android:layout_width="91dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberSigned" />
+
+            <Spinner
+                android:id="@+id/metric"
+                android:layout_width="20pt"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:text="Metric" />
+            <Spinner
+                android:id="@+id/ingredient"
+                android:layout_width="100pt"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:text="Ingredient" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/screen1btn"
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <ScrollView
+            android:id="@+id/ingredients"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="2"
-            android:text="Go back to Screen 1" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView"
+            android:layout_height="wrap_content">
+        </ScrollView>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+            android:orientation="horizontal">
 
-        <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecipeHistory"
+            <EditText
+                android:id="@+id/step"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="step"
+                android:inputType="text" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/single_recipe_row_layout" />-->
+            android:text="Button" />
 
     </LinearLayout>
 </layout>
