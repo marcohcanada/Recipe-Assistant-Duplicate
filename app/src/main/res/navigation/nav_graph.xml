@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/testFragment1">
+    app:startDestination="@id/discoverFragment">
 
     <fragment
-        android:id="@+id/testFragment1"
+        android:id="@+id/discoverFragment"
         android:name="com.jam.recipeassistant.DiscoverFragment"
-        android:label="TestFragment1" >
+        android:label="Recipe Assistant Chat">
         <action
-            android:id="@+id/action_testFragment1_to_testFragment2"
+            android:id="@+id/action_discoverFragment_to_testFragment2"
             app:destination="@id/testFragment2" />
         <action
-            android:id="@+id/action_testFragment1_to_testFragment3"
+            android:id="@+id/action_discoverFragment_to_testFragment3"
             app:destination="@id/testFragment3" />
     </fragment>
     <fragment
@@ -22,8 +22,8 @@
             android:id="@+id/action_testFragment2_to_testFragment3"
             app:destination="@id/testFragment3" />
         <action
-            android:id="@+id/action_testFragment2_to_testFragment1"
-            app:destination="@id/testFragment1" />
+            android:id="@+id/action_testFragment2_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
     </fragment>
     <fragment
         android:id="@+id/testFragment3"
@@ -33,7 +33,7 @@
             android:id="@+id/action_testFragment3_to_testFragment2"
             app:destination="@id/testFragment2" />
         <action
-            android:id="@+id/action_testFragment3_to_testFragment1"
-            app:destination="@id/testFragment1" />
+            android:id="@+id/action_testFragment3_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
     </fragment>
 </navigation>

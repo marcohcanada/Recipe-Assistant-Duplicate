@@ -39,6 +39,10 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
 }
 
 dependencies {
@@ -52,8 +56,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'net.sourceforge.jtds:jtds:1.3.1'
-    //implementation files('E:\\Recipe-Assistant\\dependancies\\mssql-jdbc-9.4.1.jre8')
+    implementation 'com.google.firebase:firebase-appdistribution-gradle:2.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -67,9 +70,22 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_version"
 
     // coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+
+    //Java V2
+    implementation 'com.google.cloud:google-cloud-dialogflow:4.3.1'
+
+    //Dialogflow SDK dependencies
+    implementation 'ai.api:sdk:2.0.7@aar'
+    implementation 'ai.api:libai:1.6.12'
+
+    //GCP Services dependencies
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.3.0'
+
+    // For Remote Calls to avoid "No functional service provider found" error during create SessionsClient procedure
+    implementation 'io.grpc:grpc-okhttp:1.42.1'
+    //implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
     //admob
     implementation 'com.google.android.gms:play-services-ads:20.4.0'
-    
 }

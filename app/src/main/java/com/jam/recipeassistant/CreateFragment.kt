@@ -28,12 +28,13 @@ class CreateFragment : Fragment() {
     }
 
     fun viewScreen1(){
-        var conn = SQLConnection()
+        findNavController().navigate(R.id.action_testFragment3_to_discoverFragment)
+        /*var conn = SQLConnection()
         var result = conn.executeQuery("SELECT * FROM Ingredient");
         if(result != null) {
             result.next()
             System.out.println(result.getString(2))
-        }
+        }*/
         //findNavController().navigate(R.id.action_testFragment3_to_testFragment1)
     }
 }
