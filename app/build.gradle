@@ -81,5 +81,4 @@ dependencies {
 
     // For Remote Calls to avoid "No functional service provider found" error during create SessionsClient procedure
     implementation 'io.grpc:grpc-okhttp:1.42.1'
-
 }

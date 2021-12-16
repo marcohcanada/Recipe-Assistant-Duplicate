@@ -1,5 +1,6 @@
 package com.jam.recipeassistant
 
+import ai.api.model.GoogleAssistantResponseMessages
 import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,20 +19,12 @@ class DialogflowManager: CoroutineScope {
     private var fragment: Fragment? = null
     private var client: SessionsClient? = null
     private var session: SessionName? = null
-    private var queryInput: QueryInput? = null
     private var uuid: String = UUID.randomUUID().toString()
-    private val LANGUAGE_CODE = "en"
     private val TAG = "DialogflowManager"
 
-    fun DialogflowManager(fragment: Fragment, sessionName: SessionName, sessionsClient: SessionsClient, queryInput: QueryInput){
-        this.fragment = fragment
-        this.session = sessionName
-        this.client = sessionsClient
-        this.queryInput = queryInput
-    }
-
-    fun initAssistant(context: Context) {
+    fun initAssistant(context: Context, fragment: Fragment) {
         try {
+            this.fragment = fragment
             val stream = context.resources.openRawResource(R.raw.credentials)
             val credentials = GoogleCredentials.fromStream(stream)
             val projectId = (credentials as ServiceAccountCredentials).projectId
@@ -46,13 +39,13 @@ class DialogflowManager: CoroutineScope {
     }
 
 //    @Throws(Exception::class)
-//    fun detectIntentText(payload: Int, text: String): QueryResult {
-//
-//        if(this.client == null || this.session == null){
-//            throw Exception("Error: no dialogflow client")
-//        }
-//
-//        // Set the text (input) and language code (en) for the query
+////    fun detectIntentText(payload: Int, text: String): QueryResult {
+////
+////        if(this.client == null || this.session == null){
+////            throw Exception("Error: no dialogflow client")
+////        }
+////
+////        // Set the text (input) and language code (en) for the query
 //        val textInput = TextInput.newBuilder().setText(text).setLanguageCode(LANGUAGE_CODE)
 //
 //        // Build the query with the TextInput
@@ -85,7 +78,7 @@ class DialogflowManager: CoroutineScope {
         job.cancel()
     }
 
-    private suspend fun doInBackground() : DetectIntentResponse? = withContext(Dispatchers.IO) {
+    private suspend fun doInBackground(queryInput: QueryInput) : DetectIntentResponse? = withContext(Dispatchers.IO) {
         try {
             val detectIntentRequest = DetectIntentRequest.newBuilder()
                 .setSession(session.toString())
@@ -95,29 +88,32 @@ class DialogflowManager: CoroutineScope {
         }
         catch (e: Exception){
             Log.d(TAG, "doInBackground: ${e.message}")
+            return@withContext null
         }
-        return@withContext null
-    }
-
-    fun execute() = launch {
 
     }
 
-    private fun onPreExecute() {
-
+    fun execute(queryInput: QueryInput) = launch {
+        val result = doInBackground(queryInput)
+        onPostExecute(result!!)
     }
 
-    private fun onPostExecute() {
-
+    private fun onPostExecute(response : DetectIntentResponse?) {
+        callback(response)
+        Fulfillment.newBuilder()
     }
 
-    fun callback(response : DetectIntentResponse){
+    private fun callback(response : DetectIntentResponse?){
         if(response != null){
-            val botMessage = response.queryResult.fulfillmentText
-            Log.d(TAG, "Recipe Assistant Response: $botMessage")
+            val botMessage = GoogleAssistantResponseMessages.ResponseBasicCard()
+            botMessage.formattedText = response.queryResult.fulfillmentText
+
+            Log.d(TAG, "Recipe Assistant Response: ${botMessage.formattedText}")
+            (fragment as DiscoverFragment).showTextView(botMessage.formattedText, 1002)
         }
         else{
             Log.d(TAG,"Recipe Assistant Response: No response")
+            (fragment as DiscoverFragment).showTextView("No response from bot", 1002)
         }
     }
 }

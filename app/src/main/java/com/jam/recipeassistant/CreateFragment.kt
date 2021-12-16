@@ -33,6 +33,6 @@ class CreateFragment : Fragment() {
     }
 
     fun viewScreen1(){
-        findNavController().navigate(R.id.action_testFragment3_to_testFragment1)
+        findNavController().navigate(R.id.action_testFragment3_to_discoverFragment)
     }
 }
