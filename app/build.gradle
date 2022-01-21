@@ -71,5 +71,14 @@ dependencies {
 
     //admob
     implementation 'com.google.android.gms:play-services-ads:20.4.0'
+
+    // retrofit
+    def version_moshi = "1.8.0"
+    def version_retrofit = "2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // logging for retrofit
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
     
 }

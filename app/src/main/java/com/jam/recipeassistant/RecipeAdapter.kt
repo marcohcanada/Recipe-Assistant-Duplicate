@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 /**
 * Created by 991470628 : MARCO HIDALGO ROMERO
@@ -25,6 +26,16 @@ class RecipeAdapter(private val context: Activity, private val img: Array<Int>, 
         imageView.setImageResource(img[position])
         nameText.text = name[position]
         authorText.text = author[position]
+
+        /*rowView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(p0: View?) {
+                if (position == 0 || position == 1) {
+                    val a = p0!!.context as AppCompatActivity
+                    val vcrf = ViewCreatedRecipesFragment()
+                    a.supportFragmentManager.beginTransaction().replace(R.id.ll_vcrf, vcrf).addToBackStack(null).commit()
+                }
+            }
+        })*/
 
         return rowView
     }
