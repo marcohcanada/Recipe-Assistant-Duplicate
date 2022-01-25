@@ -4,8 +4,7 @@ import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
 @Serializable
-class RecipeCard (
-
+data class RecipeCard (
         var RecipeId:Int,
         var RecipeName: String,
         var RecipeImage: String,

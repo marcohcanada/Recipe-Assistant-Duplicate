@@ -30,36 +30,10 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
-
-        /*binding.screen3btn.setOnClickListener {
-            viewScreen3()
-        }
-        binding.screen1btn.setOnClickListener {
-            viewScreen1()
-        }*/
-
-        /*val items:Array<String> = arrayOf("Beef Strogenof","Beef Wellington","Oven Baked Salmon","Ceaser Salad","Over Easy Egg","Eggs Benedict","Chicken Karage","Kung-Pow Chicken","Chicken Noodle Soup")*/
-
-        /*val recipeAdapter : ArrayAdapter<String> = activity?.let {ArrayAdapter(it,android.R.layout.simple_list_item_1,
-            recipeItems*/
-
-        /*recipeCards.add(
-            RecipeCard(
-                RecipeId = 1,
-            RecipeName = "Beef Wellington",
-        RecipeImage = "",
-        RecipeDescription = "Juicy Rare Beef Wellington made by Gordon Recipe with mushrooms, salt, beef tenderloin",
-        CreateUserName = "Gordon Ramsay",
-        MonetaryScale= 3
-        ))*/
-
 
         val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems)
 
-
-        //val recipeAdapter = RecipeAdapter(requireActivity(), recipeCards)
         val lv = binding.searchList
         adapter = recipeAdapter
         lv.adapter = adapter
@@ -76,9 +50,6 @@ class RecipesFragment : Fragment() {
                 recipeAdapter.notifyDataSetChanged()
             })
         })
-        //)}!!
-
-        //binding.searchList.adapter = recipeAdapter;
 
         binding.searchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -99,17 +70,4 @@ class RecipesFragment : Fragment() {
 
         return binding.root
     }
-
-    /*fun returnedRecipeCards(input: MutableList<RecipeCard>) {
-        recipeCards = input;
-
-    }*/
-
-    /*fun viewScreen3(){
-        findNavController().navigate(R.id.action_testFragment2_to_testFragment3)
-    }
-
-    fun viewScreen1(){
-        findNavController().navigate(R.id.action_testFragment2_to_testFragment1)
-    }*/
 }

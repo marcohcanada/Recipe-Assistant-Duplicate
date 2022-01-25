@@ -12,18 +12,12 @@ import okhttp3.FormBody
 import okhttp3.Request
 import okhttp3.RequestBody
 
-
-
-
 class SuggestionsAPI {
 
     private val client = OkHttpClient()
 
-    /*var Base_URL : String = //Resources.getSystem().getString(R.string.Base_URL);
-    var ApiSection: String = "/Suggestion";*/
-
     public fun getGeneralSuggestion(callback: (input : MutableList<RecipeCard>) -> Unit) {
-        val request = Request.Builder().url("http://20.115.105.215/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/).build()
+        val request = Request.Builder().url("http://20.119.36.240/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/).build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 println(e.message)
@@ -35,8 +29,6 @@ class SuggestionsAPI {
             }
         })
     }
-
-
 
     public fun GetUsersRecipesById(callback: (input : MutableList<RecipeCard>) -> Unit) {
         val formBody: RequestBody = FormBody.Builder()

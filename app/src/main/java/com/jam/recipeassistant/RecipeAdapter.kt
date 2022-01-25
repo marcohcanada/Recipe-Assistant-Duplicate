@@ -25,8 +25,6 @@ import java.util.*
 */
 class RecipeAdapter(private val context: Activity, private val img: MutableList<String>, private val name: MutableList<String>, private val author: MutableList<String>)
     : ArrayAdapter<String>(context, R.layout.single_recipe_row_layout, name) {
-/*class RecipeAdapter(private val context: Activity, private val recipeCard: MutableList<RecipeCard>)
-    : ArrayAdapter<RecipeCard>(context, R.layout.single_recipe_row_layout, recipeCard) {*/
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
