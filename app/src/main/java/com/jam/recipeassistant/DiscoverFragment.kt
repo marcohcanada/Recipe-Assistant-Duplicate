@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentDiscoverBinding
 
 class DiscoverFragment : Fragment() {
@@ -31,7 +32,8 @@ class DiscoverFragment : Fragment() {
     }
 
     fun viewScreen2(){
-        findNavController().navigate(R.id.action_testFragment1_to_testFragment2)
+        //findNavController().navigate(R.id.action_testFragment1_to_testFragment2)
+        //SuggestionsAPI().run();
     }
 
     fun viewScreen3(){
