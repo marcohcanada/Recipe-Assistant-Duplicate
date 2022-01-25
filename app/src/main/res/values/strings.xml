@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">RecipeAssistant</string>
     <string name="Base_URL">https://catfact.ninja/fact</string>
-
 </resources>
