@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/testFragment1">
 
     <fragment
         android:id="@+id/testFragment1"
         android:name="com.jam.recipeassistant.DiscoverFragment"
-        android:label="TestFragment1" >
+        android:label="TestFragment1">
         <action
             android:id="@+id/action_testFragment1_to_testFragment2"
             app:destination="@id/testFragment2" />
@@ -28,7 +30,7 @@
     <fragment
         android:id="@+id/testFragment3"
         android:name="com.jam.recipeassistant.CreateFragment"
-        android:label="TestFragment3" >
+        android:label="TestFragment3">
         <action
             android:id="@+id/action_testFragment3_to_testFragment2"
             app:destination="@id/testFragment2" />
@@ -36,4 +38,9 @@
             android:id="@+id/action_testFragment3_to_testFragment1"
             app:destination="@id/testFragment1" />
     </fragment>
+    <fragment
+        android:id="@+id/viewCreatedRecipesFragment"
+        android:name="com.jam.recipeassistant.ViewCreatedRecipesFragment"
+        android:label="fragment_view_created_recipes"
+        tools:layout="@layout/fragment_view_created_recipes" />
 </navigation>
