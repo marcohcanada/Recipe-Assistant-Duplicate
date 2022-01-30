@@ -12,14 +12,14 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val username = findViewById<TextView>(R.id.username)
+        val email = findViewById<TextView>(R.id.email)
         val password = findViewById<TextView>(R.id.password)
         val loginbtn = findViewById<Button>(R.id.loginbtn)
 
         //admin and admin
         loginbtn.setOnClickListener {
             //correct
-            if (username.text.toString() == "admin" && password.text.toString() == "admin") {
+            if (email.text.toString() == "admin" && password.text.toString() == "admin") {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 Toast.makeText(this@LoginActivity, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show()
