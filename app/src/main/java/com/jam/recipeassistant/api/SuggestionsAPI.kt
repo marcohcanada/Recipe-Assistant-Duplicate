@@ -11,6 +11,8 @@ import java.io.IOException
 import okhttp3.FormBody
 import okhttp3.Request
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaType
 
 class SuggestionsAPI {
 
@@ -24,14 +26,15 @@ class SuggestionsAPI {
                 println(e.stackTrace)
             }
             override fun onResponse(call: Call, response: Response) {
-                callback((Json.decodeFromString<List<RecipeCard>>(response.body()!!.string())).toMutableList());
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
 
             }
         })
     }
 
     public fun GetUsersRecipesByUser(callback: (input : MutableList<RecipeCard>) -> Unit) {
-        var JSON = MediaType.parse("application/json; charset=utf-8");
+        var JSON = "application/json; charset=utf-8".toMediaType()
         var body:RequestBody = RequestBody.create(JSON, "{\"email\": \"adriangonzalezmadruga@gmail.com\"}");
         /*val formBody: RequestBody = FormBody.Builder()
             //.add("email", "adriangonzalezmadruga@gmail.com")
@@ -47,7 +50,8 @@ class SuggestionsAPI {
                 println(e.stackTrace)
             }
             override fun onResponse(call: Call, response: Response) {
-                callback((Json.decodeFromString<List<RecipeCard>>(response.body()!!.string())).toMutableList());
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
 
             }
         })
