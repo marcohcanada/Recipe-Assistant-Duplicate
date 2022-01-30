@@ -4,12 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.22" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_makerecipe.xml" value="0.36666666666666664" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_makerecipe.xml" value="0.25052083333333336" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_recipes.xml" value="0.36666666666666664" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_recipe_row_layout.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.14" />
