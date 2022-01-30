@@ -17,7 +17,7 @@ class SuggestionsAPI {
     private val client = OkHttpClient()
 
     public fun getGeneralSuggestion(callback: (input : MutableList<RecipeCard>) -> Unit) {
-        val request = Request.Builder().url("http://20.119.36.240/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/).build()
+        val request = Request.Builder().url("http://52.186.139.166/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/).build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 println(e.message)
