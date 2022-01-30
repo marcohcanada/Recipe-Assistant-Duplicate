@@ -30,13 +30,15 @@ class SuggestionsAPI {
         })
     }
 
-    public fun GetUsersRecipesById(callback: (input : MutableList<RecipeCard>) -> Unit) {
-        val formBody: RequestBody = FormBody.Builder()
-            .add("message", "Your message")
-            .build()
+    public fun GetUsersRecipesByUser(callback: (input : MutableList<RecipeCard>) -> Unit) {
+        var JSON = MediaType.parse("application/json; charset=utf-8");
+        var body:RequestBody = RequestBody.create(JSON, "{\"email\": \"adriangonzalezmadruga@gmail.com\"}");
+        /*val formBody: RequestBody = FormBody.Builder()
+            //.add("email", "adriangonzalezmadruga@gmail.com")
+            .build()*/
         val request: Request = Request.Builder()
-            .url("https://www.example.com/index.php")
-            .post(formBody)
+            .url("http://52.186.139.166/Suggestions/GetUsersRecipesById")
+            .post(body)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
