@@ -20,7 +20,7 @@ class CreateFragment : Fragment() {
     }
 
 
-    fun viewScreen1(){
+    /*fun viewScreen1(){
         findNavController().navigate(R.id.action_testFragment3_to_discoverFragment)
         /*var conn = SQLConnection()
         var result = conn.executeQuery("SELECT * FROM Ingredient");
@@ -29,6 +29,6 @@ class CreateFragment : Fragment() {
             System.out.println(result.getString(2))
         }*/
         //findNavController().navigate(R.id.action_testFragment3_to_testFragment1)
-    }
+    }*/
 }
 
