@@ -19,7 +19,7 @@ class CreateFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCreateBinding.inflate(this.layoutInflater, container, false)
 
-        binding.screen1btn.setOnClickListener {
+        binding.button.setOnClickListener {
             viewScreen1()
         }
         //ask internet permission
