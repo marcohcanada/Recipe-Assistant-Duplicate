@@ -3,29 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3828125" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/search_frag_background.xml" value="0.3828125" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_test1.xml" value="0.36666666666666664" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_test2.xml" value="0.36666666666666664" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/search_fragment.xml" value="0.36666666666666664" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/menu/search_menu.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/drawable/bot_rect_bubble.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.13697916666666668" />
-        <entry key="app/src/main/res/drawable/user_input_rect_bubble.xml" value="0.2712962962962963" />
-        <entry key="app/src/main/res/drawable/user_rect_bubble.xml" value="0.2712962962962963" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/bot_message_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_create.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.25" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/bot_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/search_frag_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/user_input_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/user_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_login.xml" value="0.15364583333333334" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/bot_message_layout.xml" value="0.15364583333333334" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/build_recipe_list_ingredient.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_makerecipe.xml" value="0.25052083333333336" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_recipes.xml" value="0.36666666666666664" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_recipe_row_layout.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.14" />
@@ -38,8 +34,6 @@
         <entry key="app/src/main/res/layout/fragment_view_created_recipes.xml" value="0.1" />
         <entry key="app/src/main/res/layout/single_created_recipe_row_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/single_recipe_row_layout.xml" value="0.11594202898550725" />
-        <entry key="app/src/main/res/layout/user_message_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.4473018089012115" />
       </map>
     </option>
   </component>

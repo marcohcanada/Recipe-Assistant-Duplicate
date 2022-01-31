@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:paddingTop="4dp"
-                app:srcCompat="@drawable/ic_baseline_send_24" />
+                android:src="@drawable/ic_baseline_send_24" />
 
             <EditText
                 android:id="@+id/userMessageEdt"

@@ -40,6 +40,5 @@
     <fragment
         android:id="@+id/viewCreatedRecipesFragment"
         android:name="com.jam.recipeassistant.ViewCreatedRecipesFragment"
-        android:label="fragment_view_created_recipes"
-        tools:layout="@layout/fragment_view_created_recipes" />
+        android:label="fragment_view_created_recipes" />
 </navigation>
