@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/bot_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/search_frag_background.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/user_input_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/drawable/user_rect_bubble.xml" value="0.16979166666666667" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_login.xml" value="0.15364583333333334" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/activity_main.xml" value="0.2015625" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/bot_message_layout.xml" value="0.15364583333333334" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/build_recipe_list_ingredient.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
