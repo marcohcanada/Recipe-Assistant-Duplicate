@@ -6,28 +6,38 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.jam.recipeassistant.api.LoginAPI
+import com.jam.recipeassistant.model.Login.UserLogin
+import okhttp3.*
 
 
 class LoginActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         val email = findViewById<TextView>(R.id.email)
         val password = findViewById<TextView>(R.id.password)
         val loginbtn = findViewById<Button>(R.id.loginbtn)
 
+        var userLogin: UserLogin
+
         //admin and admin
         loginbtn.setOnClickListener {
-            //correct
-            if (email.text.toString() == "admin" && password.text.toString() == "admin") {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(this@LoginActivity, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show()
-            }
-            //incorrect
-            else {
-                Toast.makeText(this@LoginActivity, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show()
-            }
+            userLogin = UserLogin(email.text.toString(), password.text.toString(), -1)
+            LoginAPI().VerifyLogin(userLogin, fun (input: UserLogin) {
+                if (input.result == 1) {
+                     this.runOnUiThread(java.lang.Runnable {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        Toast.makeText(this@LoginActivity, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show()
+                    })
+                } else {
+                    this.runOnUiThread(java.lang.Runnable {
+                    Toast.makeText(this@LoginActivity, "LOGIN FAILED !!!", Toast.LENGTH_SHORT).show()
+                    })
+                }
+            })
         }
-    }
-}
+}}
