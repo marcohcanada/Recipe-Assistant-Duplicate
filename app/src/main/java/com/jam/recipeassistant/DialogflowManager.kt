@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
+// Manager for Dialog Integration
 class DialogflowManager: CoroutineScope {
     private var job = Job()
     override val coroutineContext: CoroutineContext
