@@ -89,8 +89,9 @@
                 android:textStyle="bold" />
 
             <ListView
+                android:id="@+id/ingredients_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="400px" />
 
             <TextView
                 android:id="@+id/header_steps"
@@ -105,8 +106,9 @@
                 android:textStyle="bold" />
 
             <ListView
+                android:id="@+id/steps_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="400px" />
 
 
         </LinearLayout>

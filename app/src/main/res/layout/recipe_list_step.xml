@@ -18,8 +18,8 @@
         tools:layout_editor_absoluteY="1dp"
         android:gravity="left">
 
-        <!--<TextView
-            android:id="@+id/amount"
+        <TextView
+            android:id="@+id/step_number"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -27,18 +27,10 @@
             android:text="2" />
 
         <TextView
-            android:id="@+id/unit"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="center"
-            android:text="2" />-->
-
-        <TextView
-            android:id="@+id/ingredient"
+            android:id="@+id/step"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Beef" />
+            android:text="Make list like this" />
     </LinearLayout>
 </LinearLayout>

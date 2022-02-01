@@ -38,6 +38,14 @@ class RecipesFragment : Fragment() {
         adapter = recipeAdapter
         lv.adapter = adapter
 
+        lv.setOnItemClickListener { parent, view, position, id ->
+            val imgItems = imgItems[position]
+            val recipeItems = recipeItems[position]
+            val authorItems = authorItems[position]
+
+            //val i = Intent(this, DetailsFragment.javaClass)
+        }
+
         SuggestionsAPI().getGeneralSuggestion( fun(input:MutableList<RecipeCard>) {
             recipeCards = input;
             recipeItems.clear()
