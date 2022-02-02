@@ -48,12 +48,12 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/deleteButton"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:text="Delete"
-                android:layout_marginRight="20px"
+                android:text="Del"
+                android:layout_marginRight="10px"
                 android:layout_gravity="center"/>
 
         </LinearLayout>

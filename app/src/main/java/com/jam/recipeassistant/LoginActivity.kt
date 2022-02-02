@@ -21,6 +21,9 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<TextView>(R.id.password)
         val loginbtn = findViewById<Button>(R.id.loginbtn)
 
+        email.setText("a@b.ca")
+        password.setText("123")
+
         var userLogin: UserLogin
 
         //admin and admin

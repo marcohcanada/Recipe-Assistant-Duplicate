@@ -37,7 +37,7 @@ class SuggestionsAPI {
 
     public fun GetUsersRecipesByUser(callback: (input : MutableList<RecipeCard>) -> Unit) {
             var JSON = "application/json; charset=utf-8".toMediaType()
-        var body:RequestBody = RequestBody.create(JSON, "{\"email\": \"adriangonzalezmadruga@gmail.com\"}");
+        var body:RequestBody = RequestBody.create(JSON, "{\"email\": \"a@b.ca\"}");
         /*val formBody: RequestBody = FormBody.Builder()
             //.add("email", "adriangonzalezmadruga@gmail.com")
             .build()*/
@@ -59,9 +59,9 @@ class SuggestionsAPI {
         })
     }
 
-    public fun GetRecipeDetails(callback: (input : RecipeDetails) -> Unit) {
+    public fun GetRecipeDetails(recipeName:String, callback: (input : RecipeDetails) -> Unit) {
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \"Chiken Alfredo\"}");
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\"}");
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/Suggestions/GetRecipeDetails")
             .post(body)

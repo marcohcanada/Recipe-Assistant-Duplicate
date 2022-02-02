@@ -9,75 +9,80 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jam.recipeassistant.api.SuggestionsAPI
-import com.jam.recipeassistant.databinding.FragmentCreateBinding
+//import com.jam.recipeassistant.databinding.FragmentCreateBinding
 import com.jam.recipeassistant.model.Suggestions.RecipeDetails
 import java.io.ByteArrayInputStream
 import java.io.InputStream
+import android.view.*
+import android.widget.ArrayAdapter
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.jam.recipeassistant.databinding.FragmentRecipesBinding
+import com.jam.recipeassistant.model.Suggestions.RecipeCard
 
 class CreateFragment : Fragment() {
 
-    lateinit var binding: FragmentCreateBinding
-    lateinit var adapter1: IngredientAdapter
-    lateinit var adapter2: StepAdapter
+    lateinit var binding: FragmentRecipesBinding
+    var recipeCards: MutableList<RecipeCard> = ArrayList()
+    lateinit var adapter: UserRecipeAdapter
 
-    var ingredientItems :MutableList<String> = ArrayList()
-
-    var stepNumberItems :MutableList<String> = ArrayList()
-    var stepItems :MutableList<String> = ArrayList()
+    var imgItems :MutableList<String> = ArrayList()
+    var recipeItems :MutableList<String> = ArrayList()
+    var authorItems :MutableList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCreateBinding.inflate(this.layoutInflater, container, false)
-        val ingredientAdapter = IngredientAdapter(requireActivity(), ingredientItems)
+        binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
 
-        val lvIngredients = binding.ingredientsList
-        adapter1 = ingredientAdapter
-        lvIngredients.adapter = adapter1
+        val recipeAdapter = UserRecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems)
 
-        val stepAdapter = StepAdapter(requireActivity(), stepNumberItems ,stepItems)
+        val lv = binding.searchList
+        adapter = recipeAdapter
+        lv.adapter = adapter
 
-        val lvSteps = binding.stepsList
-        adapter2 = stepAdapter
-        lvSteps.adapter = adapter2
+        lv.setOnItemClickListener { parent, view, position, id ->
+            val imgItems = imgItems[position]
+            val recipeItems = recipeItems[position]
+            val authorItems = authorItems[position]
 
-        SuggestionsAPI().GetRecipeDetails(fun(input: RecipeDetails) {
-            ingredientItems.addAll(input.RecipeIngredients.map { it.RecipeIngredientAmount.toString() + " " + it.RecipeIngredientUnit + " " + it.IngredientName })
-            stepNumberItems.addAll( input.RecipeSteps.map { it.StepNumber.toString() })
-            stepItems.addAll( input.RecipeSteps.map { it.StepText })
+            val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
+            findNavController().navigate(action)
+        }
+
+        SuggestionsAPI().GetUsersRecipesByUser( fun(input:MutableList<RecipeCard>) {
+            recipeCards = input;
+            recipeItems.clear()
+            recipeItems.addAll(input.map { it.RecipeName })
+            authorItems.clear()
+            authorItems.addAll(input.map { it.CreateUserName })
+            imgItems.clear()
+            imgItems.addAll(input.map { it.RecipeImage })
             activity?.runOnUiThread(java.lang.Runnable {
-                val imageData: ByteArray = Base64.decode(
-                    input.RecipeImage.substring(input.RecipeImage.indexOf(",") + 1),
-                    Base64.DEFAULT
-                )
-                val inputStream: InputStream = ByteArrayInputStream(imageData)
-                val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-                binding.image.setImageBitmap(bitmap)
-
-                binding.recipeTitle.text = input.RecipeName
-
-                binding.description.text = input.RecipeDescription
-                adapter1.notifyDataSetChanged()
-                adapter2.notifyDataSetChanged()
+                recipeAdapter.notifyDataSetChanged()
             })
         })
 
+        binding.searchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                if ((recipeCards.map { it.RecipeName }).contains(query)){
+                    recipeAdapter.filter.filter(query)
+                }
+                return false
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                recipeAdapter.filter.filter(newText)
+                return false
+            }
+
+
+        })
 
         return binding.root
     }
-
-
-    /*fun viewScreen1(){
-        findNavController().navigate(R.id.action_testFragment3_to_discoverFragment)
-        /*var conn = SQLConnection()
-        var result = conn.executeQuery("SELECT * FROM Ingredient");
-        if(result != null) {
-            result.next()
-            System.out.println(result.getString(2))
-        }*/
-        //findNavController().navigate(R.id.action_testFragment3_to_testFragment1)
-    }*/
 }
 
