@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.provider.Settings.Global.getString
 import com.jam.recipeassistant.R
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
+import com.jam.recipeassistant.model.Suggestions.RecipeDetails
 import com.jam.recipeassistant.model.Suggestions.User
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
@@ -53,6 +54,27 @@ class SuggestionsAPI {
             override fun onResponse(call: Call, response: Response) {
                 val body:ResponseBody? = response.body
                 callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
+
+            }
+        })
+    }
+
+    public fun GetRecipeDetails(callback: (input : RecipeDetails) -> Unit) {
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \"Chiken Alfredo\"}");
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/Suggestions/GetRecipeDetails")
+            .post(body)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<RecipeDetails>(body!!.string())))
 
             }
         })
