@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_details.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_grocery_comparison.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_makerecipe.xml" value="0.1" />

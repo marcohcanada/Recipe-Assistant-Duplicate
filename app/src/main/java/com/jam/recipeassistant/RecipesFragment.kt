@@ -43,7 +43,8 @@ class RecipesFragment : Fragment() {
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
 
-            //val i = Intent(this, DetailsFragment.javaClass)
+            val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
+            findNavController().navigate(action)
         }
 
         SuggestionsAPI().getGeneralSuggestion( fun(input:MutableList<RecipeCard>) {

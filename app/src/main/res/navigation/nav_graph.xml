@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/discoverFragment">
 
@@ -10,21 +11,18 @@
         android:label="Recipe Assistant Chat">
         <action
             android:id="@+id/action_discoverFragment_to_testFragment2"
-            app:destination="@id/testFragment2" />
+            app:destination="@id/recipesFragment" />
         <action
             android:id="@+id/action_discoverFragment_to_testFragment3"
             app:destination="@id/testFragment3" />
     </fragment>
     <fragment
-        android:id="@+id/testFragment2"
+        android:id="@+id/recipesFragment"
         android:name="com.jam.recipeassistant.RecipesFragment"
-        android:label="TestFragment2" >
+        android:label="fragment_recipes">
         <action
-            android:id="@+id/action_testFragment2_to_testFragment3"
-            app:destination="@id/testFragment3" />
-        <action
-            android:id="@+id/action_testFragment2_to_discoverFragment"
-            app:destination="@id/discoverFragment" />
+            android:id="@+id/action_recipesFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/testFragment3"
@@ -32,7 +30,7 @@
         android:label="TestFragment3">
         <action
             android:id="@+id/action_testFragment3_to_testFragment2"
-            app:destination="@id/testFragment2" />
+            app:destination="@id/recipesFragment" />
         <action
             android:id="@+id/action_testFragment3_to_discoverFragment"
             app:destination="@id/discoverFragment" />
@@ -41,4 +39,19 @@
         android:id="@+id/viewCreatedRecipesFragment"
         android:name="com.jam.recipeassistant.ViewCreatedRecipesFragment"
         android:label="fragment_view_created_recipes" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.jam.recipeassistant.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="imgItems"
+            app:argType="string" />
+        <argument
+            android:name="recipeItems"
+            app:argType="string" />
+        <argument
+            android:name="authorItems"
+            app:argType="string" />
+    </fragment>
 </navigation>
