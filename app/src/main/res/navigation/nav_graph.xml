@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_discoverFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_myListFragment"
+            app:destination="@id/myListFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
@@ -32,6 +35,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_myListFragment"
+            app:destination="@id/myListFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFragment"
@@ -46,6 +52,9 @@
         <action
             android:id="@+id/action_createFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_myListFragment"
+            app:destination="@id/myListFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewCreatedRecipesFragment"
@@ -69,7 +78,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jam.recipeassistant.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="Settings">
         <action
             android:id="@+id/action_settingsFragment_to_discoverFragment"
             app:destination="@id/discoverFragment" />
@@ -79,5 +88,25 @@
         <action
             android:id="@+id/action_settingsFragment_to_createFragment"
             app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_myListFragment"
+            app:destination="@id/myListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myListFragment"
+        android:name="com.jam.recipeassistant.MyListFragment"
+        android:label="My List" >
+        <action
+            android:id="@+id/action_myListFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_myListFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_myListFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_myListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>

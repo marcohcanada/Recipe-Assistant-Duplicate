@@ -5,18 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jam.recipeassistant.databinding.FragmentSettingsBinding
+import com.jam.recipeassistant.databinding.FragmentMyListBinding
 
-class SettingsFragment : Fragment() {
+class MyListFragment : Fragment() {
 
-    lateinit var binding: FragmentSettingsBinding
+    lateinit var binding: FragmentMyListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSettingsBinding.inflate(this.layoutInflater, container, false)
+        binding = FragmentMyListBinding.inflate(this.layoutInflater, container, false)
 
         return binding.root
     }
