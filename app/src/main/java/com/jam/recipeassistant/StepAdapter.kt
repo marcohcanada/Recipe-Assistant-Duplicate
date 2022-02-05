@@ -28,4 +28,15 @@ class StepAdapter(private val context: Activity, private val stepNumber: Mutable
     fun update() {
         notifyDataSetChanged()
     }
+
+    fun getAsJson(): String {
+        var json = ""
+        for (i in 0..stepNumber.count()-1) {
+            json += "    {\n" +
+                    "      \"stepNumber\": "+stepNumber[i]+",\n" +
+                    "      \"stepText\": \""+step[i]+"\"\n" +
+                    "    },"
+        }
+        return json;
+    }
 }

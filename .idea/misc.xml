@@ -17,8 +17,11 @@
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/build_recipe_list_ingredient.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_build_recipe.xml" value="0.19635416666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_details.xml" value="0.1671195652173913" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_grocery_comparison.xml" value="0.19791666666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_makerecipe.xml" value="0.25052083333333336" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_my_list.xml" value="0.19791666666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_recipes.xml" value="0.36666666666666664" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_user_recipes.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_view_created_recipes.xml" value="0.19635416666666666" />

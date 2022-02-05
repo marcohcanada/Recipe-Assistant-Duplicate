@@ -32,4 +32,18 @@ class IngredientAdapter(private val context: Activity, private val ingredient: M
     fun update() {
         notifyDataSetChanged()
     }
+
+    fun getAsJson(): String {
+        var json = ""
+        for (i in ingredient) {
+            var items = i.split(" ")
+            var itemsName = items.subList(2, items.count())
+            json += "    {\n" +
+                    "      \"recipeIngredientAmount\": "+items[0]+",\n" +
+                    "      \"recipeIngredientUnit\": \""+items[1]+"\",\n" +
+                    "      \"ingredientName\": \""+itemsName.joinToString(" ")+"\"\n" +
+                    "    },"
+        }
+        return json;
+    }
 }
