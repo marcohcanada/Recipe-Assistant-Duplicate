@@ -9,7 +9,7 @@
         android:title="Recipes"
         android:icon="@drawable/recipes_icon"/>
     <item
-        android:id="@+id/testFragment3"
+        android:id="@+id/createFragment"
         android:title="Create"
         android:icon="@drawable/create_icon"/>
     <item
@@ -17,7 +17,7 @@
         android:title="My List"
         android:icon="@drawable/my_list_icon"/>
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/settingsFragment"
         android:title="Settings"
         android:icon="@drawable/settings_icon"/>
 </menu>

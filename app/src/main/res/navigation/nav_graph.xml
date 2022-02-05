@@ -10,30 +10,42 @@
         android:name="com.jam.recipeassistant.DiscoverFragment"
         android:label="Recipe Assistant Chat">
         <action
-            android:id="@+id/action_discoverFragment_to_testFragment2"
+            android:id="@+id/action_discoverFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
         <action
-            android:id="@+id/action_discoverFragment_to_testFragment3"
-            app:destination="@id/testFragment3" />
+            android:id="@+id/action_discoverFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipesFragment"
         android:name="com.jam.recipeassistant.RecipesFragment"
-        android:label="fragment_recipes">
+        android:label="Recipes List">
         <action
             android:id="@+id/action_recipesFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/testFragment3"
+        android:id="@+id/createFragment"
         android:name="com.jam.recipeassistant.CreateFragment"
-        android:label="TestFragment3">
+        android:label="Create a New Recipe">
         <action
-            android:id="@+id/action_testFragment3_to_testFragment2"
+            android:id="@+id/action_createFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
         <action
-            android:id="@+id/action_testFragment3_to_discoverFragment"
+            android:id="@+id/action_createFragment_to_discoverFragment"
             app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_createFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewCreatedRecipesFragment"
@@ -53,5 +65,19 @@
         <argument
             android:name="authorItems"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.jam.recipeassistant.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
 </navigation>
