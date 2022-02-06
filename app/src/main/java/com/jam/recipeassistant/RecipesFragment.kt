@@ -25,6 +25,10 @@ class RecipesFragment : Fragment() {
     var imgItems :MutableList<String> = ArrayList()
     var recipeItems :MutableList<String> = ArrayList()
     var authorItems :MutableList<String> = ArrayList()
+    var likesItems = mutableListOf<String>("Likes: 411k", "Likes: 30k")
+    var dislikesItems = mutableListOf<String>("Dislikes: 15k", "Dislikes: 412")
+    var viewsItems = mutableListOf<String>("Views: 10,769,989", "Views: 1,018,948")
+    var warningsItems = mutableListOf<String>("Warning", "Warning")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +36,8 @@ class RecipesFragment : Fragment() {
     ): View? {
         binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
 
-        val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems)
+        val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems,
+            likesItems, dislikesItems, viewsItems, warningsItems)
 
         val lv = binding.searchList
         adapter = recipeAdapter
@@ -42,6 +47,10 @@ class RecipesFragment : Fragment() {
             val imgItems = imgItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
+            val likesItems = likesItems[position]
+            val dislikesItems = dislikesItems[position]
+            val viewsItems = viewsItems[position]
+            val warningsItems = warningsItems[position]
 
             val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)
