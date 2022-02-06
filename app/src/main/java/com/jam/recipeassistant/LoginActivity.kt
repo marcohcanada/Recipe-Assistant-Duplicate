@@ -16,6 +16,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.jam.recipeassistant.api.LoginAPI
 import com.jam.recipeassistant.model.Login.UserLogin
 import okhttp3.*
+import java.io.*
 import java.util.*
 
 
@@ -51,8 +52,33 @@ class LoginActivity : AppCompatActivity() {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         scheduleNotification()
-                        Toast.makeText(this@LoginActivity, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT)
-                            .show()
+                        val file = "abc.txt"
+                        val data = "This is an example of internal storage in Android"
+                        val fileOutputStream: FileOutputStream
+                        try {
+                            fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
+                            fileOutputStream.write(data.toByteArray())
+                        } catch (e: FileNotFoundException){
+                            e.printStackTrace()
+                        }catch (e: NumberFormatException){
+                            e.printStackTrace()
+                        }catch (e: IOException){
+                            e.printStackTrace()
+                        }catch (e: Exception){
+                            e.printStackTrace()
+                        }
+                        val filename = name
+                        var fileInputStream: FileInputStream? = null
+                        fileInputStream = openFileInput(filename)
+                        var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+                        val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+                        val stringBuilder: StringBuilder = StringBuilder()
+                        var text: String? = null
+                        while ({ text = bufferedReader.readLine(); text }() != null) {
+                            stringBuilder.append(text)
+                        }
+                        Toast.makeText(this@LoginActivity,
+                            "LOGIN SUCCESSFUL AND DATA SAVED" + data, Toast.LENGTH_LONG).show()
                     })
                 } else {
                     this.runOnUiThread(java.lang.Runnable {
