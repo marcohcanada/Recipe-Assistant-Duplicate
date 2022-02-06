@@ -54,7 +54,7 @@ class DetailsFragment : Fragment() {
         adapter2 = stepAdapter
         lvSteps.adapter = adapter2
 
-        //Log.d("DetailsFragment", "Image Item: $imgItems, Recipe Item: $recipeItems, Author Item: $authorItems")
+        SuggestionsAPI().addView(recipeItems)
 
         SuggestionsAPI().GetRecipeDetails(recipeItems, fun(input: RecipeDetails) {
             ingredientItems.addAll(input.RecipeIngredients.map { it.RecipeIngredientAmount.toString() + " " + it.RecipeIngredientUnit + " " + it.IngredientName })

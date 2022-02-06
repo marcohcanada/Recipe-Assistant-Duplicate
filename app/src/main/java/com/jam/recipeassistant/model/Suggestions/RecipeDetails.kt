@@ -10,6 +10,10 @@ data class RecipeDetails (
     var RecipeDescription: String,
     var CreateUserName: String,
     var MonetaryScale: Int,
+    var Likes:Long,
+    var Dislikes:Long,
+    var Views:Long,
+    var Severity:Int,
     var RecipeIngredients: List<RecipeDetailsIngredients>,
     var RecipeSteps: List<RecipeDetailsSteps>
 )

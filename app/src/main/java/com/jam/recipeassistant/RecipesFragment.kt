@@ -25,10 +25,10 @@ class RecipesFragment : Fragment() {
     var imgItems :MutableList<String> = ArrayList()
     var recipeItems :MutableList<String> = ArrayList()
     var authorItems :MutableList<String> = ArrayList()
-    var likesItems = mutableListOf<String>("Likes: 411k", "Likes: 30k")
-    var dislikesItems = mutableListOf<String>("Dislikes: 15k", "Dislikes: 412")
-    var viewsItems = mutableListOf<String>("Views: 10,769,989", "Views: 1,018,948")
-    var warningsItems = mutableListOf<String>("Warning", "Warning")
+    var likesItems :MutableList<String> = ArrayList()
+    var dislikesItems :MutableList<String> = ArrayList()
+    var viewsItems :MutableList<String> = ArrayList()
+    var warningsItems :MutableList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,11 +47,6 @@ class RecipesFragment : Fragment() {
             val imgItems = imgItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
-            val likesItems = "1"//likesItems[position]
-            val dislikesItems = "1"//dislikesItems[position]
-            val viewsItems = "1"//viewsItems[position]
-            val warningsItems = "1"//warningsItems[position]
-
             val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)
         }
@@ -64,6 +59,14 @@ class RecipesFragment : Fragment() {
             authorItems.addAll(input.map { it.CreateUserName })
             imgItems.clear()
             imgItems.addAll(input.map { it.RecipeImage })
+            likesItems.clear()
+            likesItems.addAll(input.map { "Likes" + it.Likes })
+            dislikesItems.clear()
+            dislikesItems.addAll(input.map { "Dislikes" + it.Dislikes })
+            viewsItems.clear()
+            viewsItems.addAll(input.map { "Views" + it.Views })
+            warningsItems.clear()
+            warningsItems.addAll(input.map { if (it.Severity == 1) "Warning" else ""  })
             activity?.runOnUiThread(java.lang.Runnable {
                 recipeAdapter.notifyDataSetChanged()
             })

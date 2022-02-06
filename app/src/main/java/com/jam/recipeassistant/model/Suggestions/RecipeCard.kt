@@ -11,4 +11,8 @@ data class RecipeCard (
         var RecipeDescription: String,
         var CreateUserName: String,
         var MonetaryScale: Int,
+        var Likes:Long,
+        var Dislikes:Long,
+        var Views:Long,
+        var Severity:Int,
 )

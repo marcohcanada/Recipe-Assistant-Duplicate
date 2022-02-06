@@ -45,9 +45,13 @@ class LoginAPI {
     }
 
     public fun GetUserIntolerances(callback: (input : MutableList<Intolerances>) -> Unit) {
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var email = "a@b.ca"
+        var jsoncontent = "{\"email\": \""+email+"\"}"
+        var body:RequestBody = RequestBody.create(JSON, jsoncontent);
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/UserManagement/GetUserIntolerances")
-            //.post(body)
+            .post(body)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -65,7 +69,8 @@ class LoginAPI {
     public fun AddIntolerance(content: Intolerances) {
         var JSON = "application/json; charset=utf-8".toMediaType()
         //"{\"email\": \""+content.email+"\", \"password\": \""+content.password+"\", \"result\": \""+content.result+"\"}"
-        var jsoncontent = "{\"username\": \"Adrian\", \"ingredient\": \""+content.ingredient+"\", \"severity\": "+content.severity+"}"
+        var email = "a@b.ca"
+        var jsoncontent = "{\"email\": \""+email+"\", \"ingredient\": \""+content.ingredient+"\", \"severity\": "+content.severity+"}"
         var body:RequestBody = RequestBody.create(JSON, jsoncontent);
         /*val formBody: RequestBody = FormBody.Builder()
             //.add("email", "adriangonzalezmadruga@gmail.com")
