@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         scheduleNotification()
-                        val file = "abc.txt"
+                        /*val file = "abc.txt"
                         val data = "This is an example of internal storage in Android"
                         val fileOutputStream: FileOutputStream
                         try {
@@ -76,9 +76,9 @@ class LoginActivity : AppCompatActivity() {
                         var text: String? = null
                         while ({ text = bufferedReader.readLine(); text }() != null) {
                             stringBuilder.append(text)
-                        }
+                        }*/
                         Toast.makeText(this@LoginActivity,
-                            "LOGIN SUCCESSFUL AND DATA SAVED" + data, Toast.LENGTH_LONG).show()
+                            "LOGIN SUCCESSFUL AND DATA SAVED", Toast.LENGTH_LONG).show()
                     })
                 } else {
                     this.runOnUiThread(java.lang.Runnable {
