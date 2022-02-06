@@ -7,110 +7,50 @@
 
     </data>
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="655dp"
-        tools:context=".BuildRecipeFragment">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".RecipesFragment">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
-            android:layout_height="655dp"
-            android:layout_gravity="top"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:color="#00000000"
+            android:text="My Recipes" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="125dp"
-                android:gravity="left"
-                android:orientation="horizontal">
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/search_frag_background"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search Recipe"
+            android:queryBackground="@android:color/transparent"/>
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:layout_weight="0"
-                    tools:srcCompat="@tools:sample/avatars" />
+        <ListView
+            android:id="@+id/search_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
 
-                <TextView
-                    android:id="@+id/recipeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="125dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="20px"
-                    android:singleLine="false"
-                    android:text="Some Recipe Here I guess I am wrapping-around"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:ellipsize="none"
-                    android:maxLines="100"
-                    android:scrollHorizontally="false"/>
-            </LinearLayout>
+        <Button
+            android:id="@+id/CreateRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Recipe"
+            android:layout_gravity="bottom"/>
 
-            <TextView
-                android:id="@+id/header_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25px"
-                android:ellipsize="none"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:text="Description"
-                android:textSize="18dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25px"
-                android:ellipsize="none"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:text=""
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/header_ingredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25px"
-                android:ellipsize="none"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:text="Ingredients"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <ListView
-                android:id="@+id/ingredients_list"
-                android:layout_width="match_parent"
-                android:layout_height="400px" />
-
-            <TextView
-                android:id="@+id/header_steps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25px"
-                android:ellipsize="none"
-                android:scrollHorizontally="false"
-                android:singleLine="false"
-                android:text="Steps"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <ListView
-                android:id="@+id/steps_list"
-                android:layout_width="match_parent"
-                android:layout_height="400px"
-                android:layout_marginBottom="300px"/>
-
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </layout>

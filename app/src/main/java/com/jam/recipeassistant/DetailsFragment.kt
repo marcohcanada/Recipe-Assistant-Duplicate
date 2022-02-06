@@ -37,9 +37,7 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val imgItems = args.imgItems
         val recipeItems = args.recipeItems
-        val authorItems = args.authorItems
 
         binding = FragmentDetailsBinding.inflate(this.layoutInflater, container, false)
         val ingredientAdapter = IngredientAdapter(requireActivity(), ingredientItems)

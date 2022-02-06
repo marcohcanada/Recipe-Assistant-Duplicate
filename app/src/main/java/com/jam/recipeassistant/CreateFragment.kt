@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jam.recipeassistant.api.SuggestionsAPI
-//import com.jam.recipeassistant.databinding.FragmentCreateBinding
+import com.jam.recipeassistant.databinding.FragmentCreateBinding
 import com.jam.recipeassistant.model.Suggestions.RecipeDetails
 import java.io.ByteArrayInputStream
 import java.io.InputStream
@@ -18,12 +18,11 @@ import android.widget.ArrayAdapter
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.jam.recipeassistant.databinding.FragmentRecipesBinding
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 
 class CreateFragment : Fragment() {
 
-    lateinit var binding: FragmentRecipesBinding
+    lateinit var binding: FragmentCreateBinding
     var recipeCards: MutableList<RecipeCard> = ArrayList()
     lateinit var adapter: UserRecipeAdapter
 
@@ -35,10 +34,9 @@ class CreateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
+        binding = FragmentCreateBinding.inflate(this.layoutInflater, container, false)
 
         val recipeAdapter = UserRecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems)
-
         val lv = binding.searchList
         adapter = recipeAdapter
         lv.adapter = adapter
