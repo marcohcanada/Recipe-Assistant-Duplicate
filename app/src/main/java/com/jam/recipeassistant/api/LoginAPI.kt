@@ -26,7 +26,7 @@ class LoginAPI {
             //.add("email", "adriangonzalezmadruga@gmail.com")
             .build()*/
         val request: Request = Request.Builder()
-            .url("http://52.186.139.166/Login/CheckLogin")
+            .url("http://52.186.139.166/UserManagement/CheckLogin")
             .post(body)
             .build()
 
