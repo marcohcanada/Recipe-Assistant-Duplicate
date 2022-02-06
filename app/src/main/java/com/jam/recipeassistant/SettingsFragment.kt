@@ -36,6 +36,21 @@ class SettingsFragment : Fragment() {
                 })
 
         })
+        binding.addIntolerance.setOnClickListener {
+            LoginAPI().AddIntolerance(Intolerances(ingredient = binding.editTextIngredientName.text.toString(), severity = binding.seekBar.progress))
+            var listItem : String = "";
+            for(i in ingredientItems) {
+                if (i.contains(binding.editTextIngredientName.text)) {
+                    listItem = i
+                    break
+                }
+            }
+            if (listItem.isNotEmpty()) {
+                ingredientItems.remove(listItem)
+            }
+            ingredientItems.add(binding.editTextIngredientName.text.toString() + ",     Severity: " + (if (binding.seekBar.progress == 0) "Show" else (if (binding.seekBar.progress == 1) "Warn" else "Hide")))
+            adapter1.notifyDataSetChanged()
+        }
         
 
 
