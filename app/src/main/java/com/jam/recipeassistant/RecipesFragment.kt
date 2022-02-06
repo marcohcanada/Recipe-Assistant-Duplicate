@@ -47,10 +47,10 @@ class RecipesFragment : Fragment() {
             val imgItems = imgItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
-            val likesItems = likesItems[position]
-            val dislikesItems = dislikesItems[position]
-            val viewsItems = viewsItems[position]
-            val warningsItems = warningsItems[position]
+            val likesItems = "1"//likesItems[position]
+            val dislikesItems = "1"//dislikesItems[position]
+            val viewsItems = "1"//viewsItems[position]
+            val warningsItems = "1"//warningsItems[position]
 
             val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)

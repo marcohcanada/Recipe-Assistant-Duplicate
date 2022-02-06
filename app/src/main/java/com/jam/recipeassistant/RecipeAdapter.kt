@@ -47,10 +47,10 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
         imageView.setImageBitmap(bitmap)
         nameText.text = name[position]
         authorText.text = author[position]
-        likesText.text = likes[position]
-        dislikesText.text = dislikes[position]
-        viewsText.text = views[position]
-        warningsText.text = warnings[position]
+        likesText.text = "1"//likes[position]
+        dislikesText.text = "1"//dislikes[position]
+        viewsText.text = "1"//views[position]
+        warningsText.text = "1"//warnings[position]
 
         /*rowView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
