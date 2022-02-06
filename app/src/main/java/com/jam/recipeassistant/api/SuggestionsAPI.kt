@@ -15,14 +15,18 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import okhttp3.MediaType.Companion.toMediaType
+import java.io.BufferedReader
+import java.io.File
+import java.io.*
 
 class SuggestionsAPI {
 
     private val client = OkHttpClient()
 
-    public fun getGeneralSuggestion(callback: (input : MutableList<RecipeCard>) -> Unit) {
+    public fun getGeneralSuggestion(getFilesDirPath :String,callback: (input : MutableList<RecipeCard>) -> Unit) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var email = "a@b.ca"
+        var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"email\": \""+email+"\"}");
         val request = Request.Builder()
             .url("http://52.186.139.166/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/)
@@ -41,9 +45,10 @@ class SuggestionsAPI {
         })
     }
 
-    public fun GetUsersRecipesByUser(callback: (input : MutableList<RecipeCard>) -> Unit) {
+    public fun GetUsersRecipesByUser(getFilesDirPath :String, callback: (input : MutableList<RecipeCard>) -> Unit) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var email = "a@b.ca"
+        var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"email\": \""+email+"\"}");
         /*val formBody: RequestBody = FormBody.Builder()
             //.add("email", "adriangonzalezmadruga@gmail.com")
@@ -85,9 +90,10 @@ class SuggestionsAPI {
 
     }
 
-    public fun GetRecipeDetails(recipeName:String, callback: (input : RecipeDetails) -> Unit) {
+    public fun GetRecipeDetails(recipeName:String, getFilesDirPath :String, callback: (input : RecipeDetails) -> Unit) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var email = "a@b.ca"
+        var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/Suggestions/GetRecipeDetails")

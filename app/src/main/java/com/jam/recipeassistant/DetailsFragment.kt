@@ -56,7 +56,7 @@ class DetailsFragment : Fragment() {
 
         SuggestionsAPI().addView(recipeItems)
 
-        SuggestionsAPI().GetRecipeDetails(recipeItems, fun(input: RecipeDetails) {
+        SuggestionsAPI().GetRecipeDetails(recipeItems, activity?.getFilesDir()!!.path,fun(input: RecipeDetails) {
             ingredientItems.addAll(input.RecipeIngredients.map { it.RecipeIngredientAmount.toString() + " " + it.RecipeIngredientUnit + " " + it.IngredientName })
             stepNumberItems.addAll( input.RecipeSteps.map { it.StepNumber.toString() })
             stepItems.addAll( input.RecipeSteps.map { it.StepText })

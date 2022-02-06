@@ -29,7 +29,7 @@ class SettingsFragment : Fragment() {
         val lvIngredients = binding.listViewIntolerances
         adapter1 = ingredientAdapter
         lvIngredients.adapter = adapter1
-        LoginAPI().GetUserIntolerances( fun(input: MutableList<Intolerances>) {
+        LoginAPI().GetUserIntolerances(activity?.getFilesDir()!!.path, fun(input: MutableList<Intolerances>) {
                 activity?.runOnUiThread(java.lang.Runnable {
                     ingredientItems.addAll(input.map { it.ingredient + ",     Severity: " + (if (it.severity == 0) "Show" else (if (it.severity == 1) "Warn" else "Hide"))  })
                     adapter1.notifyDataSetChanged();
@@ -37,7 +37,7 @@ class SettingsFragment : Fragment() {
 
         })
         binding.addIntolerance.setOnClickListener {
-            LoginAPI().AddIntolerance(Intolerances(ingredient = binding.editTextIngredientName.text.toString(), severity = binding.seekBar.progress))
+            LoginAPI().AddIntolerance(activity?.getFilesDir()!!.path, Intolerances(ingredient = binding.editTextIngredientName.text.toString(), severity = binding.seekBar.progress))
             var listItem : String = "";
             for(i in ingredientItems) {
                 if (i.contains(binding.editTextIngredientName.text)) {

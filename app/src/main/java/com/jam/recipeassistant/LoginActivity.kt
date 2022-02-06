@@ -52,6 +52,10 @@ class LoginActivity : AppCompatActivity() {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         scheduleNotification()
+
+                        File(getFilesDir().path + "/somefile.txt").writeText(userLogin.email)
+
+
                         /*val file = "abc.txt"
                         val data = "This is an example of internal storage in Android"
                         val fileOutputStream: FileOutputStream

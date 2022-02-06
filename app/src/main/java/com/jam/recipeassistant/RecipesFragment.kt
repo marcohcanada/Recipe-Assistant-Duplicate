@@ -51,7 +51,7 @@ class RecipesFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        SuggestionsAPI().getGeneralSuggestion( fun(input:MutableList<RecipeCard>) {
+        SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, fun(input:MutableList<RecipeCard>) {
             recipeCards = input;
             recipeItems.clear()
             recipeItems.addAll(input.map { it.RecipeName })
