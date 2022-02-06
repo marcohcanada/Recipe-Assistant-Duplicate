@@ -1,9 +1,6 @@
 package com.jam.recipeassistant
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -19,12 +16,16 @@ import androidx.core.app.NotificationManagerCompat
 import com.jam.recipeassistant.api.LoginAPI
 import com.jam.recipeassistant.model.Login.UserLogin
 import okhttp3.*
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity() {
 
-    var channelId = "channel_id_example_01"
-    val notificationId = 101
+    /*var channelId = "channel_id_example_01"
+    val notificationId = 101*/
+
+    val name = "Notification Title"
+    val descriptionText = "Notification Description"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                     this.runOnUiThread(java.lang.Runnable {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        sendNotification()
+                        scheduleNotification()
                         Toast.makeText(this@LoginActivity, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT)
                             .show()
                     })
@@ -65,10 +66,8 @@ class LoginActivity : AppCompatActivity() {
 
     fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Notification Title"
-            val descriptionText = "Notification Description"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(channelId, name, importance).apply {
+            val channel = NotificationChannel(channelID, name, importance).apply {
                 description = descriptionText
             }
             val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -76,26 +75,35 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun sendNotification() {
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    fun scheduleNotification() {
+        val intent = Intent(applicationContext, BroadcastReceiver::class.java)
+        val title = name
+        val message = descriptionText
+        intent.putExtra(titleExtra, title)
+        intent.putExtra(messageExtra, message)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            applicationContext,
+            notificationID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val time = getTime()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                time,
+                pendingIntent
+            )
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+    }
 
-        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.send_icon)
-        val bitmapLargeIcon = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.send)
-
-        val builder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Example Title")
-            .setContentText("Example Description")
-            .setLargeIcon(bitmapLargeIcon)
-            .setStyle(NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line so we need to extend it to be much, much longer"))
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        with(NotificationManagerCompat.from(this)) {
-            notify(notificationId, builder.build())
-        }
+    fun getTime(): Long {
+        val calendar = Calendar.getInstance()
+        calendar.setTime(Date())
+        calendar.add(Calendar.MINUTE, 2)
+        return calendar.timeInMillis
     }
 }

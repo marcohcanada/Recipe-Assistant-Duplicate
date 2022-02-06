@@ -3,6 +3,7 @@
     package="com.jam.recipeassistant">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeAssistant"
         android:usesCleartextTraffic="true">
+        <receiver
+            android:name=".BroadcastReceiver"
+            android:enabled="true"/>
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
