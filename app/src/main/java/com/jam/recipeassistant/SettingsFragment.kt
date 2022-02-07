@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.jam.recipeassistant.api.UserManagementAPI
 import com.jam.recipeassistant.databinding.FragmentSettingsBinding
-import com.jam.recipeassistant.model.Login.Intolerances
+import com.jam.recipeassistant.model.UserManagement.Intolerances
 
 class SettingsFragment : Fragment() {
 

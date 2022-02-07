@@ -1,14 +1,9 @@
 package com.jam.recipeassistant.api
 
-import com.jam.recipeassistant.model.Login.UserLogin
-import com.jam.recipeassistant.model.Suggestions.RecipeDetails
-import kotlinx.serialization.*
-import kotlinx.serialization.json.Json
 import okhttp3.*
 import java.io.IOException
 import okhttp3.Request
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import okhttp3.MediaType.Companion.toMediaType
 
 class RecipeManagementAPI {

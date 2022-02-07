@@ -1,7 +1,7 @@
 package com.jam.recipeassistant.api
 
-import com.jam.recipeassistant.model.Login.Intolerances
-import com.jam.recipeassistant.model.Login.UserLogin
+import com.jam.recipeassistant.model.UserManagement.Intolerances
+import com.jam.recipeassistant.model.UserManagement.UserLogin
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import okhttp3.*

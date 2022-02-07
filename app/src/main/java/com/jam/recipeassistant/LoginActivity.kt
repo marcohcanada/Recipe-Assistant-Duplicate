@@ -10,7 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.jam.recipeassistant.api.UserManagementAPI
-import com.jam.recipeassistant.model.Login.UserLogin
+import com.jam.recipeassistant.model.UserManagement.UserLogin
 import okhttp3.*
 import java.io.*
 import java.util.*

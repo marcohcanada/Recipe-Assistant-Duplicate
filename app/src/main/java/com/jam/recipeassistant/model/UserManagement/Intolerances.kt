@@ -1,7 +1,6 @@
-package com.jam.recipeassistant.model.Login
+package com.jam.recipeassistant.model.UserManagement
 
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
 
 @Serializable
 data class Intolerances(

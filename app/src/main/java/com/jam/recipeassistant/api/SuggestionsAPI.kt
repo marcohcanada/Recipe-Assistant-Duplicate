@@ -5,7 +5,6 @@ import android.provider.Settings.Global.getString
 import com.jam.recipeassistant.R
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 import com.jam.recipeassistant.model.Suggestions.RecipeDetails
-import com.jam.recipeassistant.model.Suggestions.User
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import okhttp3.*
