@@ -17,7 +17,7 @@ import com.jam.recipeassistant.model.Suggestions.RecipeDetails
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : Fragment() { // actual recipe details
 
     val args: DetailsFragmentArgs by navArgs()
     lateinit var binding: FragmentDetailsBinding
