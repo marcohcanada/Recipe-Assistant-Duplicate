@@ -3,17 +3,13 @@ package com.jam.recipeassistant
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
-import android.widget.RemoteViews
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.jam.recipeassistant.api.LoginAPI
+import com.jam.recipeassistant.api.UserManagementAPI
 import com.jam.recipeassistant.model.Login.UserLogin
 import okhttp3.*
 import java.io.*
@@ -46,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         //admin and admin
         loginbtn.setOnClickListener {
             userLogin = UserLogin(email.text.toString(), password.text.toString(), -1)
-            LoginAPI().VerifyLogin(userLogin, fun(input: UserLogin) {
+            UserManagementAPI().VerifyLogin(userLogin, fun(input: UserLogin) {
                 if (input.result == 1) {
                     this.runOnUiThread(java.lang.Runnable {
                         val intent = Intent(this, MainActivity::class.java)

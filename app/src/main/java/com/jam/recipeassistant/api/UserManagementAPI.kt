@@ -17,7 +17,7 @@ import java.io.File
  * Created by 991470628 : MARCO HIDALGO ROMERO
  * on 2022-01-30
  */
-class LoginAPI {
+class UserManagementAPI {
     private val client = OkHttpClient()
 
     public fun VerifyLogin(content: UserLogin, callback: (input : UserLogin) -> Unit) {
