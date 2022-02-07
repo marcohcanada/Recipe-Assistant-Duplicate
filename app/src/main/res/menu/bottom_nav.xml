@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/discoverFragment"
-        android:title="Discover"
-        android:icon="@drawable/discover_icon"/>
-    <item
-        android:id="@+id/recipesFragment"
-        android:title="Recipes"
+        android:id="@+id/discoveryFragment"
+        android:title="Discovery"
         android:icon="@drawable/recipes_icon"/>
     <item
-        android:id="@+id/createFragment"
-        android:title="Create"
-        android:icon="@drawable/create_icon"/>
+        android:id="@+id/chatbotFragment"
+        android:title="Chatbot"
+        android:icon="@drawable/discover_icon"/>
     <item
-        android:id="@+id/myListFragment"
-        android:title="My List"
+        android:id="@+id/createRecipeFragment"
+        android:title="Create"
         android:icon="@drawable/my_list_icon"/>
+    <item
+        android:id="@+id/myRecipesFragment"
+        android:title="My Recipes"
+        android:icon="@drawable/create_icon"/>
     <item
         android:id="@+id/settingsFragment"
         android:title="Settings"

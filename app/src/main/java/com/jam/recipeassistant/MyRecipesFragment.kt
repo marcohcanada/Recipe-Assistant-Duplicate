@@ -46,7 +46,7 @@ class MyRecipesFragment : Fragment() {
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
 
-            val action = MyRecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
+            val action = MyRecipesFragmentDirections.actionMyRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)
         }
 

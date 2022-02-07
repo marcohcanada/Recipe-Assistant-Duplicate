@@ -47,7 +47,7 @@ class DiscoveryFragment : Fragment() {
             val imgItems = imgItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
-            val action = DiscoveryFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
+            val action = DiscoveryFragmentDirections.actionDiscoveryFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)
         }
 
