@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/discoveryFragment"
         android:name="com.jam.recipeassistant.DiscoveryFragment"
-        android:label="Recipes List">
+        android:label="Discovery">
         <action
             android:id="@+id/action_discoveryFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
