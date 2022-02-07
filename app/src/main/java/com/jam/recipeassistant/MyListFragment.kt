@@ -1,6 +1,10 @@
 package com.jam.recipeassistant
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +20,8 @@ class MyListFragment : Fragment() {
     var ingredientItems :MutableList<String> = ArrayList()
     var stepNumberItems :MutableList<String> = ArrayList()
     var stepItems :MutableList<String> = ArrayList()
+    val pickImage = 100
+    var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +49,12 @@ class MyListFragment : Fragment() {
             binding.editTextTextIngredient.setText("")
             adapter1.notifyDataSetChanged()
         }
+
+        binding.btnAddImage.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage)
+        }
+
         binding.addSteps.setOnClickListener {
             stepNumberItems.add((stepNumberItems.count() +1).toString())
             stepItems.add(binding.editTextTextStep.text.toString())
@@ -67,5 +79,13 @@ class MyListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            binding.ivAddImage.setImageURI(imageUri)
+        }
     }
 }
