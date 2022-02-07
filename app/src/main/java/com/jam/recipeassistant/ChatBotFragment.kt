@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.api.SuggestionsAPI
-import com.jam.recipeassistant.databinding.FragmentDiscoverBinding
+import com.jam.recipeassistant.databinding.FragmentChatbotBinding
 import android.widget.FrameLayout
 
 import android.widget.TextView
@@ -18,9 +18,9 @@ import com.google.cloud.dialogflow.v2.TextInput
 
 
 
-class DiscoverFragment : Fragment() {
+class ChatBotFragment : Fragment() {
 
-    lateinit var binding: FragmentDiscoverBinding
+    lateinit var binding: FragmentChatbotBinding
     lateinit var manager: DialogflowManager
     private val LANGUAGE_CODE = "en"
 
@@ -30,7 +30,7 @@ class DiscoverFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentDiscoverBinding.inflate(this.layoutInflater, container, false)
+        binding = FragmentChatbotBinding.inflate(this.layoutInflater, container, false)
         manager = DialogflowManager()
         manager.initAssistant(this.requireContext(), this)
         binding.sendMessageBtn.setOnClickListener {

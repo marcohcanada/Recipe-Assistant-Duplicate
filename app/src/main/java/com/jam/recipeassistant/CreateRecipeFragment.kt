@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jam.recipeassistant.api.RecipeManagementAPI
-import com.jam.recipeassistant.databinding.FragmentMyListBinding
+import com.jam.recipeassistant.databinding.FragmentCreateRecipeBinding
 
-class MyListFragment : Fragment() {
+class CreateRecipeFragment : Fragment() {
 
-    lateinit var binding: FragmentMyListBinding
+    lateinit var binding: FragmentCreateRecipeBinding
     lateinit var adapter1: IngredientAdapter
     lateinit var adapter2: StepAdapter
     var ingredientItems :MutableList<String> = ArrayList()
@@ -22,7 +22,7 @@ class MyListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentMyListBinding.inflate(this.layoutInflater, container, false)
+        binding = FragmentCreateRecipeBinding.inflate(this.layoutInflater, container, false)
 
         val ingredientAdapter = IngredientAdapter(requireActivity(), ingredientItems)
 

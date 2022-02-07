@@ -110,11 +110,11 @@ class DialogflowManager: CoroutineScope {
             botMessage.formattedText = response.queryResult.fulfillmentText
 
             Log.d(TAG, "Recipe Assistant Response: ${botMessage.formattedText}")
-            (fragment as DiscoverFragment).showTextView(botMessage.formattedText, 1002)
+            (fragment as ChatBotFragment).showTextView(botMessage.formattedText, 1002)
         }
         else{
             Log.d(TAG,"Recipe Assistant Response: No response")
-            (fragment as DiscoverFragment).showTextView("No response from bot", 1002)
+            (fragment as ChatBotFragment).showTextView("No response from bot", 1002)
         }
     }
 }

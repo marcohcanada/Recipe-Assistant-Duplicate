@@ -14,7 +14,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
-        tools:context=".CreateFragment">
+        tools:context=".MyRecipesFragment">
 
         <EditText
             android:id="@+id/editTextTextPersonName"

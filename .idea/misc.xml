@@ -17,6 +17,7 @@
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/build_recipe_list_ingredient.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_build_recipe.xml" value="0.19635416666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create_recipe.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_details.xml" value="0.1671195652173913" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_grocery_comparison.xml" value="0.19791666666666666" />
@@ -49,18 +50,13 @@
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_grocery_comparison.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_makerecipe.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_my_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_test1.xml" value="0.16964376074851836" />
         <entry key="app/src/main/res/layout/fragment_test2.xml" value="0.24534718816444578" />
         <entry key="app/src/main/res/layout/fragment_test3.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_view_created_recipes.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/recipe_list_ingredient.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/recipe_list_step.xml" value="0.1" />
         <entry key="app/src/main/res/layout/single_created_recipe_row_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/single_recipe_row_layout.xml" value="0.11594202898550725" />
-        <entry key="app/src/main/res/layout/single_user_recipe_row.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/user_message_layout.xml" value="0.1" />
       </map>
     </option>
   </component>

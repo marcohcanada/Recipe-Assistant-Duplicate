@@ -12,13 +12,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.api.SuggestionsAPI
-import com.jam.recipeassistant.databinding.FragmentRecipesBinding
+import com.jam.recipeassistant.databinding.FragmentDiscoveryBinding
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 
 
-class RecipesFragment : Fragment() {
+class DiscoveryFragment : Fragment() {
 
-    lateinit var binding: FragmentRecipesBinding
+    lateinit var binding: FragmentDiscoveryBinding
     var recipeCards: MutableList<RecipeCard> = ArrayList()
     lateinit var adapter: RecipeAdapter
 
@@ -34,7 +34,7 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecipesBinding.inflate(this.layoutInflater, container, false)
+        binding = FragmentDiscoveryBinding.inflate(this.layoutInflater, container, false)
 
         val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems,
             likesItems, dislikesItems, viewsItems, warningsItems)
@@ -47,7 +47,7 @@ class RecipesFragment : Fragment() {
             val imgItems = imgItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
-            val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
+            val action = DiscoveryFragmentDirections.actionRecipesFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
             findNavController().navigate(action)
         }
 
