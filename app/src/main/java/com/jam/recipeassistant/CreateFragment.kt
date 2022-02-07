@@ -20,7 +20,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 
-class CreateFragment : Fragment() { // show users own recpies in list
+class CreateFragment : Fragment() {
 
     lateinit var binding: FragmentCreateBinding
     var recipeCards: MutableList<RecipeCard> = ArrayList()
