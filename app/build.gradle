@@ -114,5 +114,11 @@ dependencies {
 
     // logging for retrofit
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
-    
+
+    //user permission
+    implementation 'com.karumi:dexter:6.2.2'
+
+    //coil
+    implementation("io.coil-kt:coil:1.1.1")
+
 }
