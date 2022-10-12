@@ -133,6 +133,12 @@
                 android:layout_height="wrap_content"
                 android:text="Add Step" />
 
+            <Button
+                android:id="@+id/removeSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove Step" />
+
             <ImageView
                 android:id="@+id/ivAddImage"
                 android:layout_width="125dp"

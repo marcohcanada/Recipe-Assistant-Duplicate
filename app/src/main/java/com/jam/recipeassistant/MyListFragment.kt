@@ -104,6 +104,11 @@ class MyListFragment : Fragment() {
             adapter2.notifyDataSetChanged()
         }
 
+        binding.removeSteps.setOnClickListener {
+            stepNumberItems.remove((stepNumberItems.count()).toString())
+            adapter2.notifyDataSetChanged()
+        }
+
         binding.CreateRecipe.setOnClickListener {
             var json = "{\n" +
                     "  \"recipeId\": 0,\n" +
