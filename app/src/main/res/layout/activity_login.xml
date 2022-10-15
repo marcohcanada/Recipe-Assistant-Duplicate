@@ -42,6 +42,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/loginbtn"
         android:text="LOGIN"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/steel_blue"
         android:layout_margin="20dp"
         />
 
