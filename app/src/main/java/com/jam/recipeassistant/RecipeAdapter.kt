@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.graphics.BitmapFactory
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.util.Base64
 import com.squareup.picasso.Picasso
 
@@ -50,6 +51,8 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
             val inputStream: InputStream = ByteArrayInputStream(imageData)
             val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
             imageView.setImageBitmap(bitmap)
+        } else if(imgType[position] == "URI") {
+            imageView.setImageURI(Uri.parse(img[position]))
         }
 
 

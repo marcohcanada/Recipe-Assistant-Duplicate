@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Base64
 import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentDetailsBinding
@@ -71,6 +72,8 @@ class DetailsFragment : Fragment() {
                     val inputStream: InputStream = ByteArrayInputStream(imageData)
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.image.setImageBitmap(bitmap)
+                } else if(input.RecipeImageType == "URI") {
+                    binding.image.setImageURI(Uri.parse(input.RecipeImage))
                 }
 
 
