@@ -23,6 +23,7 @@ class DiscoveryFragment : Fragment() {
     lateinit var adapter: RecipeAdapter
 
     var imgItems :MutableList<String> = ArrayList()
+    var imgTypeItems :MutableList<String> = ArrayList()
     var recipeItems :MutableList<String> = ArrayList()
     var authorItems :MutableList<String> = ArrayList()
     var likesItems :MutableList<String> = ArrayList()
@@ -36,7 +37,7 @@ class DiscoveryFragment : Fragment() {
     ): View? {
         binding = FragmentDiscoveryBinding.inflate(this.layoutInflater, container, false)
 
-        val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems,
+        val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, imgTypeItems, recipeItems, authorItems,
             likesItems, dislikesItems, viewsItems, warningsItems)
 
         val lv = binding.searchList
@@ -45,6 +46,7 @@ class DiscoveryFragment : Fragment() {
 
         lv.setOnItemClickListener { parent, view, position, id ->
             val imgItems = imgItems[position]
+            //val imgTypeItems = imgTypeItems[position]
             val recipeItems = recipeItems[position]
             val authorItems = authorItems[position]
             val action = DiscoveryFragmentDirections.actionDiscoveryFragmentToDetailsFragment(imgItems, recipeItems, authorItems)
@@ -59,6 +61,8 @@ class DiscoveryFragment : Fragment() {
             authorItems.addAll(input.map { it.CreateUserName })
             imgItems.clear()
             imgItems.addAll(input.map { it.RecipeImage })
+            imgTypeItems.clear()
+            imgTypeItems.addAll(input.map { it.RecipeImageType })
             likesItems.clear()
             likesItems.addAll(input.map { "Likes: " + it.Likes })
             dislikesItems.clear()

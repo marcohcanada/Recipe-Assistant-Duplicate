@@ -8,6 +8,7 @@ data class RecipeCard (
         var RecipeId:Int,
         var RecipeName: String,
         var RecipeImage: String,
+        var RecipeImageType: String,
         var RecipeDescription: String,
         var CreateUserName: String,
         var MonetaryScale: Int,

@@ -14,6 +14,7 @@ import android.util.Base64
 import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentDetailsBinding
 import com.jam.recipeassistant.model.Suggestions.RecipeDetails
+import com.squareup.picasso.Picasso
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 
@@ -59,13 +60,19 @@ class DetailsFragment : Fragment() {
             stepNumberItems.addAll( input.RecipeSteps.map { it.StepNumber.toString() })
             stepItems.addAll( input.RecipeSteps.map { it.StepText })
             activity?.runOnUiThread(java.lang.Runnable {
-                val imageData: ByteArray = Base64.decode(
-                    input.RecipeImage.substring(input.RecipeImage.indexOf(",") + 1),
-                    Base64.DEFAULT
-                )
-                val inputStream: InputStream = ByteArrayInputStream(imageData)
-                val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-                binding.image.setImageBitmap(bitmap)
+
+                if(input.RecipeImageType == "WEB") {
+                    Picasso.with(context).load(input.RecipeImage).resize(250, 250).into(binding.image);
+                } else if(input.RecipeImageType == "SVG") {
+                    val imageData: ByteArray = Base64.decode(
+                        input.RecipeImage.substring(input.RecipeImage.indexOf(",") + 1),
+                        Base64.DEFAULT
+                    )
+                    val inputStream: InputStream = ByteArrayInputStream(imageData)
+                    val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
+                    binding.image.setImageBitmap(bitmap)
+                }
+
 
                 binding.recipeTitle.text = input.RecipeName
 

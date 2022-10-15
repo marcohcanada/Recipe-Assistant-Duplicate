@@ -27,6 +27,7 @@ class MyRecipesFragment : Fragment() {
     lateinit var adapter: UserRecipeAdapter
 
     var imgItems :MutableList<String> = ArrayList()
+    var imgTypeItems :MutableList<String> = ArrayList()
     var recipeItems :MutableList<String> = ArrayList()
     var authorItems :MutableList<String> = ArrayList()
 
@@ -36,7 +37,7 @@ class MyRecipesFragment : Fragment() {
     ): View? {
         binding = FragmentMyRecipesBinding.inflate(this.layoutInflater, container, false)
 
-        val recipeAdapter = UserRecipeAdapter(requireActivity(), imgItems, recipeItems, authorItems)
+        val recipeAdapter = UserRecipeAdapter(requireActivity(), imgItems, imgTypeItems, recipeItems, authorItems)
         val lv = binding.searchList
         adapter = recipeAdapter
         lv.adapter = adapter
@@ -58,6 +59,8 @@ class MyRecipesFragment : Fragment() {
             authorItems.addAll(input.map { it.CreateUserName })
             imgItems.clear()
             imgItems.addAll(input.map { it.RecipeImage })
+            imgTypeItems.clear()
+            imgTypeItems.addAll(input.map { it.RecipeImageType })
             activity?.runOnUiThread(java.lang.Runnable {
                 recipeAdapter.notifyDataSetChanged()
             })

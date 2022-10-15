@@ -17,6 +17,7 @@ import android.util.Base64
 import android.util.Base64.decode
 import android.widget.Button
 import com.jam.recipeassistant.api.RecipeManagementAPI
+import com.squareup.picasso.Picasso
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.*
@@ -25,7 +26,7 @@ import java.util.*
  * Created by 991470628 : MARCO HIDALGO ROMERO
  * on 2021-11-26
  */
-class UserRecipeAdapter(private val context: Activity, private val img: MutableList<String>, private val name: MutableList<String>, private val author: MutableList<String>)
+class UserRecipeAdapter(private val context: Activity, private val img: MutableList<String>, private val imgType: MutableList<String>, private val name: MutableList<String>, private val author: MutableList<String>)
     : ArrayAdapter<String>(context, R.layout.single_user_recipe_row, name) {
 
     lateinit var adapterContext: UserRecipeAdapter
@@ -39,10 +40,14 @@ class UserRecipeAdapter(private val context: Activity, private val img: MutableL
         val nameText = rowView.findViewById(R.id.tvRecipe) as TextView
         val authorText = rowView.findViewById(R.id.tvAuthor) as TextView
 
-        val imageData: ByteArray = Base64.decode(img[position].substring(img[position].indexOf(",") + 1), Base64.DEFAULT)
-        val inputStream: InputStream = ByteArrayInputStream(imageData)
-        val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-        imageView.setImageBitmap(bitmap)
+        if(imgType[position] == "WEB") {
+            Picasso.with(context).load(img[position]).resize(250, 250).into(imageView);
+        } else if (imgType[position] == "SVG") {
+            var imageData: ByteArray = Base64.decode(img[position].substring(img[position].indexOf(",") + 1), Base64.DEFAULT)
+            val inputStream: InputStream = ByteArrayInputStream(imageData)
+            val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
+            imageView.setImageBitmap(bitmap)
+        }
         nameText.text = name[position]
         authorText.text = author[position]
 
