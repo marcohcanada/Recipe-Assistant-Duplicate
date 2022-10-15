@@ -44,7 +44,7 @@
                     android:inputType="textPersonName"
                     android:paddingLeft="20px"
                     android:singleLine="false"
-                    android:text="Some Recipe Here I guess I am wrapping-around"
+                    android:text=""
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:ellipsize="none"

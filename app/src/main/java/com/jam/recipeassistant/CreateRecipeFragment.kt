@@ -58,6 +58,10 @@ class CreateRecipeFragment : Fragment() {
                     "  \"recipeDescription\": \""+binding.editTextTextDescription.text+"\",\n" +
                     "  \"createUserName\": \"Adrian\",\n" +
                     "  \"monetaryScale\": "+binding.seekBarMonetaryScale.progress+",\n" +
+                    "  \"Likes\": 0,\n" +
+                    "  \"Dislikes\": 0,\n" +
+                    "  \"Views\": 0,\n" +
+                    "  \"Severity\": 0,\n" +
                     "  \"recipeIngredients\": [\n";
                     json += (adapter1.getAsJson().substring(0, adapter1.getAsJson().length-1) + "\n],\n")
 

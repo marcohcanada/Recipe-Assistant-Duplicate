@@ -46,6 +46,7 @@ class SettingsFragment : Fragment() {
                 ingredientItems.remove(listItem)
             }
             ingredientItems.add(binding.editTextIngredientName.text.toString() + ",     Severity: " + (if (binding.seekBar.progress == 0) "Show" else (if (binding.seekBar.progress == 1) "Warn" else "Hide")))
+            binding.editTextIngredientName.setText("")
             adapter1.notifyDataSetChanged()
         }
         

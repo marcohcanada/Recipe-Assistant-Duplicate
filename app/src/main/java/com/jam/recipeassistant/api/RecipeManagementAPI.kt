@@ -12,7 +12,7 @@ class RecipeManagementAPI {
 
     public fun UnListRecipe(recipeName:String) {
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var jsoncontent = "{\"recipeName\": \""+recipeName+"\"}"
+        var jsoncontent = "{\"recipeName\": \""+recipeName+"\", \"email\":\"nothing\"}"
         var body:RequestBody = RequestBody.create(JSON, jsoncontent)
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/RecipeManagement/UnListRecipe")
