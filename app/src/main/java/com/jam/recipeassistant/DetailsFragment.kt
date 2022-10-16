@@ -72,8 +72,8 @@ class DetailsFragment : Fragment() {
                     val inputStream: InputStream = ByteArrayInputStream(imageData)
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.image.setImageBitmap(bitmap)
-                } else if(input.RecipeImageType == "URI") {
-                    binding.image.setImageURI(Uri.parse(input.RecipeImage))
+                } else if(input.RecipeImageType == "BYTEARRAY") {
+                    binding.image.setImageBitmap(BitmapFactory.decodeByteArray(input.RecipeImage.toByteArray(), 0, input.RecipeImage.toByteArray().size))
                 }
 
 

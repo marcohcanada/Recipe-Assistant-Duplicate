@@ -51,8 +51,8 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
             val inputStream: InputStream = ByteArrayInputStream(imageData)
             val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
             imageView.setImageBitmap(bitmap)
-        } else if(imgType[position] == "URI") {
-            imageView.setImageURI(Uri.parse(img[position]))
+        } else if(imgType[position] == "BYTEARRAY") {
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(img[position].toByteArray(), 0, img[position].toByteArray().size))
         }
 
 
