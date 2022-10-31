@@ -111,4 +111,28 @@ class SuggestionsAPI {
             }
         })
     }
+
+    public fun GetRelatedContent(recipeName:String, getFilesDirPath :String, callback: (input : MutableList<RecipeCard>) -> Unit) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var email = bufferedReader.use { it.readText() }
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/Suggestions/TestContentBasedFiltering")
+            //.url("https://localhost:7291/Suggestions/TestContentBasedFiltering")
+            .post(body)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
+
+            }
+        })
+    }
 }
