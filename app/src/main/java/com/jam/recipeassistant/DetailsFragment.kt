@@ -55,7 +55,7 @@ class DetailsFragment : Fragment() {
         adapter2 = stepAdapter
         lvSteps.adapter = adapter2
 
-        SuggestionsAPI().addView(recipeItems)
+        SuggestionsAPI().addView(activity?.getFilesDir()!!.path, recipeItems)
 
         SuggestionsAPI().GetRecipeDetails(recipeItems, activity?.getFilesDir()!!.path,fun(input: RecipeDetails) {
             ingredientItems.addAll(input.RecipeIngredients.map { it.RecipeIngredientAmount.toString() + " " + it.RecipeIngredientUnit + " " + it.IngredientName })

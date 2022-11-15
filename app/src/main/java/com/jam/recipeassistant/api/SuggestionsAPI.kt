@@ -70,9 +70,11 @@ class SuggestionsAPI {
         })
     }
 
-    public fun addView(recipeName:String) {
+    public fun addView(getFilesDirPath :String, recipeName:String) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
-        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\"}");
+        var email = bufferedReader.use { it.readText() }
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/Suggestions/addView")
             .post(body)
