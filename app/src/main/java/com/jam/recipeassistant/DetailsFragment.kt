@@ -101,28 +101,28 @@ class DetailsFragment : Fragment() {
                     binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(input[0].RecipeImage.toByteArray(), 0, input[0].RecipeImage.toByteArray().size))
                 }
 
-                binding.recText1.text = input[1].RecipeName
+                binding.recText2.text = input[1].RecipeName
                 if(input[1].RecipeImageType == "WEB") {
-                    Picasso.with(context).load(input[1].RecipeImage).resize(250, 250).into(binding.recImage1);
+                    Picasso.with(context).load(input[1].RecipeImage).resize(250, 250).into(binding.recImage2);
                 } else if(input[1].RecipeImageType == "SVG"){
                     var imageData: ByteArray = Base64.decode(input[1].RecipeImage.substring(input[1].RecipeImage.indexOf(",") + 1), Base64.DEFAULT)
                     val inputStream: InputStream = ByteArrayInputStream(imageData)
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-                    binding.recImage1.setImageBitmap(bitmap)
+                    binding.recImage2.setImageBitmap(bitmap)
                 } else if(input[1].RecipeImageType == "BYTEARRAY") {
-                    binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(input[1].RecipeImage.toByteArray(), 0, input[1].RecipeImage.toByteArray().size))
+                    binding.recImage2.setImageBitmap(BitmapFactory.decodeByteArray(input[1].RecipeImage.toByteArray(), 0, input[1].RecipeImage.toByteArray().size))
                 }
 
-                binding.recText1.text = input[2].RecipeName
+                binding.recText3.text = input[2].RecipeName
                 if(input[2].RecipeImageType == "WEB") {
-                    Picasso.with(context).load(input[2].RecipeImage).resize(250, 250).into(binding.recImage1);
+                    Picasso.with(context).load(input[2].RecipeImage).resize(250, 250).into(binding.recImage3);
                 } else if(input[2].RecipeImageType == "SVG"){
                     var imageData: ByteArray = Base64.decode(input[2].RecipeImage.substring(input[2].RecipeImage.indexOf(",") + 1), Base64.DEFAULT)
                     val inputStream: InputStream = ByteArrayInputStream(imageData)
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
-                    binding.recImage1.setImageBitmap(bitmap)
+                    binding.recImage3.setImageBitmap(bitmap)
                 } else if(input[2].RecipeImageType == "BYTEARRAY") {
-                    binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(input[2].RecipeImage.toByteArray(), 0, input[2].RecipeImage.toByteArray().size))
+                    binding.recImage3.setImageBitmap(BitmapFactory.decodeByteArray(input[2].RecipeImage.toByteArray(), 0, input[2].RecipeImage.toByteArray().size))
                 }
             })
         })
