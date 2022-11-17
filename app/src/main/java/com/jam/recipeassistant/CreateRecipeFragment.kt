@@ -63,13 +63,13 @@ class CreateRecipeFragment : Fragment() {
 
         val ingredientAdapter = IngredientAdapter(requireActivity(), ingredientItems)
 
-        val lvIngredients = binding.listViewIngredients
+        val lvIngredients = binding.recyclerViewIngredients
         adapter1 = ingredientAdapter
         lvIngredients.adapter = adapter1
 
         val stepAdapter = StepAdapter(requireActivity(), stepNumberItems ,stepItems)
 
-        val lvSteps = binding.listViewSteps
+        val lvSteps = binding.recyclerViewSteps
         adapter2 = stepAdapter
         lvSteps.adapter = adapter2
 
@@ -144,10 +144,10 @@ class CreateRecipeFragment : Fragment() {
                     "  \"recipeDetailsTags\": [\"test\"],\n" +
                     "  \"monetaryScale\": "+binding.ratingBarMonetaryScale.progress+",\n" +
                     "  \"recipeIngredients\": [\n";
-                    json += (adapter1.getAsJson().substring(0, adapter1.getAsJson().length-1) + "\n],\n")
+            json += (adapter1.getAsJson().substring(0, adapter1.getAsJson().length-1) + "\n],\n")
 
 
-                    json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson().substring(0, adapter2.getAsJson().length-1) + "\n]\n}")
+            json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson().substring(0, adapter2.getAsJson().length-1) + "\n]\n}")
             RecipeManagementAPI().CreateNewRecipe(json)
         }
 

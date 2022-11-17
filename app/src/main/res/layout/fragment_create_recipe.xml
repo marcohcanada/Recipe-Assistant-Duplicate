@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content">
@@ -98,10 +99,11 @@
                     android:hint="Ingredient"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
-            <ListView
-                android:id="@+id/listViewIngredients"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewIngredients"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
             <Button
                 android:id="@+id/addIngredient"
@@ -123,22 +125,30 @@
                     android:inputType="textMultiLine" />
 
             </LinearLayout>
-            <ListView
-                android:id="@+id/listViewSteps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/addSteps"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSteps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Step" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-            <Button
-                android:id="@+id/removeSteps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Remove Step" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addSteps"
+                    android:layout_width="187.5dp"
+                    android:layout_height="wrap_content"
+                    android:text="Add Step" />
+
+                <Button
+                    android:id="@+id/removeSteps"
+                    android:layout_width="187.5dp"
+                    android:layout_height="wrap_content"
+                    android:text="Remove Step" />
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivAddImage"
@@ -154,17 +164,24 @@
                 android:layout_gravity="center"
                 android:src="@mipmap/ic_launcher"/>-->
 
-            <Button
-                android:id="@+id/btnAddImageFromCamera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Image From Camera"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnAddImageFromGallery"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Image From Gallery"/>
+                <Button
+                    android:id="@+id/btnAddImageFromCamera"
+                    android:layout_width="187.5dp"
+                    android:layout_height="wrap_content"
+                    android:text="Add Image From Camera"/>
+
+                <Button
+                    android:id="@+id/btnAddImageFromGallery"
+                    android:layout_width="187.5dp"
+                    android:layout_height="wrap_content"
+                    android:text="Add Image From Gallery"/>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/CreateRecipe"
@@ -175,5 +192,5 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>
