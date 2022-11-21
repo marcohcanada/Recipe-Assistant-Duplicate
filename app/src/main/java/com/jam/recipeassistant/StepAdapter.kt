@@ -41,7 +41,7 @@ class StepAdapter(ctx: Context, private val stepNumberArrayList: MutableList<Str
     }
 
     override fun getItemCount(): Int {
-        return stepArrayList.size
+        return stepNumberArrayList.size
     }
 
     fun update() {
