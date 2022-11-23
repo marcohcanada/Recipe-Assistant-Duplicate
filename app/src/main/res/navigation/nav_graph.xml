@@ -71,6 +71,9 @@
         android:name="com.jam.recipeassistant.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
         <argument
             android:name="imgItems"
             app:argType="string" />
