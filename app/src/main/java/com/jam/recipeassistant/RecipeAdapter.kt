@@ -25,10 +25,10 @@ import java.net.URLConnection
 * on 2021-11-26
 */
 class RecipeAdapter(private val context: Activity, private val img: MutableList<String>,
-                    private val imgType: MutableList<String>,
-                    private val name: MutableList<String>, private val author: MutableList<String>,
-                    private val likes: MutableList<String>, private val dislikes: MutableList<String>,
-                    private val views: MutableList<String>, private val warnings: MutableList<String>)
+                    private val imgType: MutableList<String>, private val name: MutableList<String>,
+                    private val author: MutableList<String>, private val likes: MutableList<String>,
+                    private val dislikes: MutableList<String>, private val views: MutableList<String>,
+                    private val rating: MutableList<String>, private val warnings: MutableList<String>)
     : ArrayAdapter<String>(context, R.layout.single_recipe_row_layout, name) {
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
@@ -41,8 +41,8 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
         val likesText = rowView.findViewById(R.id.tvLikes) as TextView
         val dislikesText = rowView.findViewById(R.id.tvDislikes) as TextView
         val viewsText = rowView.findViewById(R.id.tvViews) as TextView
+        val ratingText = rowView.findViewById(R.id.tvAvgRating) as TextView
         val warningsText = rowView.findViewById(R.id.tvWarnings) as TextView
-
 
         if(imgType[position] == "WEB") {
             Picasso.with(context).load(img[position]).resize(250, 250).into(imageView);
@@ -61,7 +61,9 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
         likesText.text = likes[position]
         dislikesText.text = dislikes[position]
         viewsText.text = views[position]
+        ratingText.text = rating[position]
         warningsText.text = warnings[position]
+
 
         /*rowView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {

@@ -54,11 +54,10 @@
 
                 <RatingBar
                     android:id="@+id/ratingBarMonetaryScale"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:numStars="3"/>
+                    android:numStars="5"/>
 
                 <!--<SeekBar
                     android:id="@+id/seekBarMonetaryScale"

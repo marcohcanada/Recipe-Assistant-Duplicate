@@ -1,10 +1,9 @@
 package com.jam.recipeassistant.api
 
-import android.content.res.Resources
-import android.provider.Settings.Global.getString
-import com.jam.recipeassistant.R
+import com.jam.recipeassistant.model.Suggestions.DetailedRecipeCard
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 import com.jam.recipeassistant.model.Suggestions.RecipeDetails
+import com.jam.recipeassistant.model.Suggestions.UpdatedRecipeDetails
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 import okhttp3.*
@@ -22,13 +21,13 @@ class SuggestionsAPI {
 
     private val client = OkHttpClient()
 
-    public fun getGeneralSuggestion(getFilesDirPath :String,callback: (input : MutableList<RecipeCard>) -> Unit) {
+    public fun getGeneralSuggestion(getFilesDirPath :String,callback: (input : MutableList<DetailedRecipeCard>) -> Unit) {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"email\": \""+email+"\"}");
         val request = Request.Builder()
-            .url("http://52.186.139.166/Suggestions/GetGeneralSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/)
+            .url("http://52.186.139.166/Suggestions/GetGeneralDetailedSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/)
             .post(body)
             .build()
         client.newCall(request).enqueue(object : Callback {
@@ -38,7 +37,7 @@ class SuggestionsAPI {
             }
             override fun onResponse(call: Call, response: Response) {
                 val body:ResponseBody? = response.body
-                callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
+                callback((Json.decodeFromString<List<DetailedRecipeCard>>(body!!.string())).toMutableList());
 
             }
         })
@@ -91,13 +90,13 @@ class SuggestionsAPI {
 
     }
 
-    public fun GetRecipeDetails(recipeName:String, getFilesDirPath :String, callback: (input : RecipeDetails) -> Unit) {
+    public fun GetRecipeDetails(recipeName:String, getFilesDirPath :String, callback: (input : UpdatedRecipeDetails) -> Unit) {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
         val request: Request = Request.Builder()
-            .url("http://52.186.139.166/Suggestions/GetRecipeDetails")
+            .url("http://52.186.139.166/Suggestions/GetUpdatedRecipeDetails")
             .post(body)
             .build()
 
@@ -108,7 +107,7 @@ class SuggestionsAPI {
             }
             override fun onResponse(call: Call, response: Response) {
                 val body:ResponseBody? = response.body
-                callback((Json.decodeFromString<RecipeDetails>(body!!.string())))
+                callback((Json.decodeFromString<UpdatedRecipeDetails>(body!!.string())))
 
             }
         })

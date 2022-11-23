@@ -1,26 +1,20 @@
 package com.jam.recipeassistant
 
 import android.app.Activity
-import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
-import com.jam.recipeassistant.model.Suggestions.RecipeCard
 import android.graphics.BitmapFactory
 
 import android.graphics.Bitmap
 import android.util.Base64
-import android.util.Base64.decode
 import android.widget.Button
 import com.jam.recipeassistant.api.RecipeManagementAPI
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayInputStream
 import java.io.InputStream
-import java.util.*
 
 /**
  * Created by 991470628 : MARCO HIDALGO ROMERO

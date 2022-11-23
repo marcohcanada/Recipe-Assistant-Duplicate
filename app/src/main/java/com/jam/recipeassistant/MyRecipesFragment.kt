@@ -1,22 +1,13 @@
 package com.jam.recipeassistant
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Base64
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentMyRecipesBinding
-import com.jam.recipeassistant.model.Suggestions.RecipeDetails
-import java.io.ByteArrayInputStream
-import java.io.InputStream
-import android.view.*
-import android.widget.ArrayAdapter
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 

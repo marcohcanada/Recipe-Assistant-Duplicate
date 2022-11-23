@@ -5,6 +5,8 @@ import java.io.IOException
 import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.MediaType.Companion.toMediaType
+import java.io.BufferedReader
+import java.io.File
 
 class RecipeManagementAPI {
 
@@ -50,6 +52,69 @@ class RecipeManagementAPI {
 
             }
         })
+    }
+
+    public fun addDisLike(getFilesDirPath :String, recipeName:String) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var email = bufferedReader.use { it.readText() }
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/RecipeManagement/addDisLike")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+
+            }
+        })
+
+    }
+
+    public fun addLike(getFilesDirPath :String, recipeName:String) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var email = bufferedReader.use { it.readText() }
+        var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/RecipeManagement/addLike")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+
+            }
+        })
+
+    }
+
+    public fun addReview(getFilesDirPath :String, recipeName:String, rating:Double, review:String) {
+        val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
+        var JSON = "application/json; charset=utf-8".toMediaType()
+        var email = bufferedReader.use { it.readText() }
+        var body:RequestBody = RequestBody.create(JSON, "{\"RecipeName\": \""+recipeName+"\", \"Email\":\""+email+"\", \"Rating\":"+rating+", \"Review\":\""+review+"\"}");
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/RecipeManagement/AddRecipeReview")
+            .post(body)
+            .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+
+            }
+        })
+
     }
 
 }

@@ -36,7 +36,7 @@ class StepAdapter(ctx: Context, private val stepNumberArrayList: MutableList<Str
     override fun onBindViewHolder(holder: StepAdapter.MyViewHolder, position: Int) {
 
         //Picasso.get().load(stepArrayList[position].StepNumber.toString())
-        holder.stepNumber.setText(stepArrayList[position])
+        holder.stepNumber.setText(stepNumberArrayList[position])
         holder.stepText.setText(stepArrayList[position])
     }
 

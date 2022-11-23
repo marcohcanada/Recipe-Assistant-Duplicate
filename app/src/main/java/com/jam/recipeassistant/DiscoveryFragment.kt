@@ -13,13 +13,14 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentDiscoveryBinding
+import com.jam.recipeassistant.model.Suggestions.DetailedRecipeCard
 import com.jam.recipeassistant.model.Suggestions.RecipeCard
 
 
 class DiscoveryFragment : Fragment() {
 
     lateinit var binding: FragmentDiscoveryBinding
-    var recipeCards: MutableList<RecipeCard> = ArrayList()
+    var recipeCards: MutableList<DetailedRecipeCard> = ArrayList()
     lateinit var adapter: RecipeAdapter
 
     var imgItems :MutableList<String> = ArrayList()
@@ -29,7 +30,9 @@ class DiscoveryFragment : Fragment() {
     var likesItems :MutableList<String> = ArrayList()
     var dislikesItems :MutableList<String> = ArrayList()
     var viewsItems :MutableList<String> = ArrayList()
+    var ratingItems :MutableList<String> = ArrayList()
     var warningsItems :MutableList<String> = ArrayList()
+    var SearchDetailStringItems :MutableList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +41,7 @@ class DiscoveryFragment : Fragment() {
         binding = FragmentDiscoveryBinding.inflate(this.layoutInflater, container, false)
 
         val recipeAdapter = RecipeAdapter(requireActivity(), imgItems, imgTypeItems, recipeItems, authorItems,
-            likesItems, dislikesItems, viewsItems, warningsItems)
+            likesItems, dislikesItems, viewsItems, ratingItems, warningsItems)
 
         val lv = binding.searchList
         adapter = recipeAdapter
@@ -53,7 +56,7 @@ class DiscoveryFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, fun(input:MutableList<RecipeCard>) {
+        SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, fun(input:MutableList<DetailedRecipeCard>) {
             recipeCards = input;
             recipeItems.clear()
             recipeItems.addAll(input.map { it.RecipeName })
@@ -69,8 +72,12 @@ class DiscoveryFragment : Fragment() {
             dislikesItems.addAll(input.map { "Dislikes: " + it.Dislikes })
             viewsItems.clear()
             viewsItems.addAll(input.map { "Views: " + it.Views })
+            ratingItems.clear()
+            ratingItems.addAll(input.map { "Rating: " + it.Rating })
             warningsItems.clear()
-            warningsItems.addAll(input.map { if (it.Severity == 1) "⚠️Warning ⚠️" else ""  })
+            warningsItems.addAll(input.map { if (it.Severity == 1) "⚠ Warning ⚠" else ""  })
+            SearchDetailStringItems.clear()
+            SearchDetailStringItems.addAll(input.map { it.SearchDetailString })
             activity?.runOnUiThread(java.lang.Runnable {
                 recipeAdapter.notifyDataSetChanged()
             })
