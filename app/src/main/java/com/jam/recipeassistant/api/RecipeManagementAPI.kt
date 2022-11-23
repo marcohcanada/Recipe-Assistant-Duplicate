@@ -1,5 +1,9 @@
 package com.jam.recipeassistant.api
 
+import com.jam.recipeassistant.model.Shared.SimpleStringList
+import com.jam.recipeassistant.model.Suggestions.RecipeCard
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import okhttp3.*
 import java.io.IOException
 import okhttp3.Request
@@ -115,6 +119,42 @@ class RecipeManagementAPI {
             }
         })
 
+    }
+
+    public fun GetAllIngredientUnits( callback: (input : SimpleStringList) -> Unit) {
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/RecipeManagement/GetAllIngredientUnits")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<SimpleStringList>(body!!.string())));
+
+            }
+        })
+    }
+
+    public fun GetAllIngredientNames( callback: (input : SimpleStringList) -> Unit) {
+        val request: Request = Request.Builder()
+            .url("http://52.186.139.166/RecipeManagement/GetAllIngredientNames")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println(e.message)
+                println(e.stackTrace)
+            }
+            override fun onResponse(call: Call, response: Response) {
+                val body:ResponseBody? = response.body
+                callback((Json.decodeFromString<SimpleStringList>(body!!.string())));
+
+            }
+        })
     }
 
 }

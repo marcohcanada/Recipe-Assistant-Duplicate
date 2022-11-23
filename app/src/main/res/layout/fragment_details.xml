@@ -33,24 +33,7 @@
                     android:layout_height="125dp"
                     android:layout_weight="0"
                     tools:srcCompat="@tools:sample/avatars" />
-
-                <!--<TextView
-                    android:id="@+id/recipeTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="125dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="20px"
-                    android:singleLine="false"
-                    android:text=""
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:ellipsize="none"
-                    android:maxLines="100"
-                    android:scrollHorizontally="false"/>-->
+                
                 <TextView
                     android:id="@+id/recipeTitle"
                     android:layout_width="wrap_content"
