@@ -48,6 +48,11 @@ class IngredientAdapter(ctx: Context, private val ingredientArrayList: MutableLi
         return ingredientArrayList.size
     }
 
+    fun deleteItem(index: Int) {
+        ingredientArrayList.removeAt(index)
+        notifyDataSetChanged()
+    }
+
     fun update() {
         notifyDataSetChanged()
     }

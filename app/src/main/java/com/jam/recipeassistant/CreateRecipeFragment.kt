@@ -81,6 +81,11 @@ class CreateRecipeFragment : Fragment() {
             adapter1.notifyDataSetChanged()
         }
 
+        binding.removeIngredient.setOnClickListener {
+            adapter1.deleteItem(index = adapter1.itemCount - 1)
+            adapter1.notifyDataSetChanged()
+        }
+
         /*binding.btnAddImage.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
@@ -118,7 +123,7 @@ class CreateRecipeFragment : Fragment() {
         }
 
         binding.removeSteps.setOnClickListener {
-            stepNumberItems.remove((stepNumberItems.count()).toString())
+            adapter2.deleteItem(index = adapter2.itemCount - 1)
             adapter2.notifyDataSetChanged()
         }
 
