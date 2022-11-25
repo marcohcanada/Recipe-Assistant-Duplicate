@@ -221,10 +221,12 @@
                 android:gravity="left"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/suggestion1"
                     android:layout_width="0dp"
                     android:layout_weight=".33"
                     android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:clickable="true">
                     <ImageView
                         android:id="@+id/recImage1"
                         android:layout_width="match_parent"
@@ -241,10 +243,12 @@
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/suggestion2"
                     android:layout_width="0dp"
                     android:layout_weight=".33"
                     android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:clickable="true">
                     <ImageView
                         android:id="@+id/recImage2"
                         android:layout_width="match_parent"
@@ -261,10 +265,12 @@
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/suggestion3"
                     android:layout_width="0dp"
                     android:layout_weight=".33"
                     android:layout_height="175dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:clickable="true">
                     <ImageView
                         android:id="@+id/recImage3"
                         android:layout_width="match_parent"

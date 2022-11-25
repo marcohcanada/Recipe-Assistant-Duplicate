@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.navigation.fragment.findNavController
 import com.jam.recipeassistant.api.RecipeManagementAPI
 import com.jam.recipeassistant.api.SuggestionsAPI
 import com.jam.recipeassistant.databinding.FragmentDetailsBinding
@@ -132,6 +133,10 @@ class DetailsFragment : Fragment() {
                 } else if(input[0].RecipeImageType == "BYTEARRAY") {
                     binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(input[0].RecipeImage.toByteArray(), 0, input[0].RecipeImage.toByteArray().size))
                 }
+                binding.suggestion1.setOnClickListener {
+                    val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[0].RecipeName, "")
+                    findNavController().navigate(action)
+                }
 
                 binding.recText2.text = input[1].RecipeName
                 if(input[1].RecipeImageType == "WEB") {
@@ -144,6 +149,10 @@ class DetailsFragment : Fragment() {
                 } else if(input[1].RecipeImageType == "BYTEARRAY") {
                     binding.recImage2.setImageBitmap(BitmapFactory.decodeByteArray(input[1].RecipeImage.toByteArray(), 0, input[1].RecipeImage.toByteArray().size))
                 }
+                binding.suggestion2.setOnClickListener {
+                    val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[1].RecipeName, "")
+                    findNavController().navigate(action)
+                }
 
                 binding.recText3.text = input[2].RecipeName
                 if(input[2].RecipeImageType == "WEB") {
@@ -155,6 +164,10 @@ class DetailsFragment : Fragment() {
                     binding.recImage3.setImageBitmap(bitmap)
                 } else if(input[2].RecipeImageType == "BYTEARRAY") {
                     binding.recImage3.setImageBitmap(BitmapFactory.decodeByteArray(input[2].RecipeImage.toByteArray(), 0, input[2].RecipeImage.toByteArray().size))
+                }
+                binding.suggestion3.setOnClickListener {
+                    val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[2].RecipeName, "")
+                    findNavController().navigate(action)
                 }
             })
         })
