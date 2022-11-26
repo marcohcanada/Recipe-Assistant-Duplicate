@@ -4,8 +4,10 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
     //id 'org.jetbrains.kotlin.multiplatform' version '1.6.10'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
+    id 'com.google.firebase.crashlytics'
 
 }
 
@@ -126,5 +128,10 @@ dependencies {
 
     //coil
     implementation("io.coil-kt:coil:1.1.1")
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 
 }

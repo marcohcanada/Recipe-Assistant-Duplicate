@@ -21,11 +21,11 @@ class SuggestionsAPI {
 
     private val client = OkHttpClient()
 
-    public fun getGeneralSuggestion(getFilesDirPath :String,callback: (input : MutableList<DetailedRecipeCard>) -> Unit) {
+    public fun getGeneralSuggestion(getFilesDirPath :String, index:Int, callback: (input : MutableList<DetailedRecipeCard>) -> Unit) {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
-        var body:RequestBody = RequestBody.create(JSON, "{\"email\": \""+email+"\"}");
+        var body:RequestBody = RequestBody.create(JSON, "{\"email\": \""+email+"\", \"index\": \""+index+"\"}");
         val request = Request.Builder()
             .url("http://52.186.139.166/Suggestions/GetGeneralDetailedSuggestion" /*(Base_URL + ApiSection + "GetGeneralSuggestion")*/)
             .post(body)
