@@ -119,7 +119,7 @@ class SuggestionsAPI {
         var email = bufferedReader.use { it.readText() }
         var body:RequestBody = RequestBody.create(JSON, "{\"recipeName\": \""+recipeName+"\", \"email\":\""+email+"\"}");
         val request: Request = Request.Builder()
-            .url("http://52.186.139.166/Suggestions/TestContentBasedFiltering")
+            .url("http://52.186.139.166/Suggestions/ContentBasedFiltering")
             //.url("https://localhost:7291/Suggestions/TestContentBasedFiltering")
             .post(body)
             .build()
