@@ -75,41 +75,51 @@ class DiscoveryFragment : Fragment() {
                 activity?.runOnUiThread(java.lang.Runnable {
                     recipeAdapter.notifyDataSetChanged()
                 })
-                index+=5
                 QueryMoreSuggestionsRecursive()
             })
-
-
+            index+=5
+        }
+        if (index == 0) {
+            index = 0
+            SuggestionsAPI().getGeneralSuggestion(
+                activity?.getFilesDir()!!.path,
+                index,
+                fun(input: MutableList<DetailedRecipeCard>) {
+                    recipeCards = input;
+                    recipeItems.clear()
+                    recipeItems.addAll(input.map { it.RecipeName })
+                    authorItems.clear()
+                    authorItems.addAll(input.map { it.CreateUserName })
+                    imgItems.clear()
+                    imgItems.addAll(input.map { it.RecipeImage })
+                    imgTypeItems.clear()
+                    imgTypeItems.addAll(input.map { it.RecipeImageType })
+                    likesItems.clear()
+                    likesItems.addAll(input.map { "Likes: " + it.Likes })
+                    dislikesItems.clear()
+                    dislikesItems.addAll(input.map { "Dislikes: " + it.Dislikes })
+                    viewsItems.clear()
+                    viewsItems.addAll(input.map { "Views: " + it.Views })
+                    ratingItems.clear()
+                    ratingItems.addAll(input.map { "Rating: " + it.Rating })
+                    warningsItems.clear()
+                    warningsItems.addAll(input.map { if (it.Severity == 1) "⚠ Warning ⚠" else "" })
+                    SearchDetailStringItems.clear()
+                    SearchDetailStringItems.addAll(input.map { it.SearchDetailString })
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        recipeAdapter.notifyDataSetChanged()
+                    })
+                    index += 5
+                    QueryMoreSuggestionsRecursive()
+                })
+            /*Thread {
+                Thread.sleep(1000)
+                activity?.runOnUiThread(java.lang.Runnable {
+                    recipeAdapter.notifyDataSetChanged()
+                })
+            }.start()*/
         }
 
-        SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, index, fun(input:MutableList<DetailedRecipeCard>) {
-            recipeCards = input;
-            recipeItems.clear()
-            recipeItems.addAll(input.map { it.RecipeName })
-            authorItems.clear()
-            authorItems.addAll(input.map { it.CreateUserName })
-            imgItems.clear()
-            imgItems.addAll(input.map { it.RecipeImage })
-            imgTypeItems.clear()
-            imgTypeItems.addAll(input.map { it.RecipeImageType })
-            likesItems.clear()
-            likesItems.addAll(input.map { "Likes: " + it.Likes })
-            dislikesItems.clear()
-            dislikesItems.addAll(input.map { "Dislikes: " + it.Dislikes })
-            viewsItems.clear()
-            viewsItems.addAll(input.map { "Views: " + it.Views })
-            ratingItems.clear()
-            ratingItems.addAll(input.map { "Rating: " + it.Rating })
-            warningsItems.clear()
-            warningsItems.addAll(input.map { if (it.Severity == 1) "⚠ Warning ⚠" else ""  })
-            SearchDetailStringItems.clear()
-            SearchDetailStringItems.addAll(input.map { it.SearchDetailString })
-            activity?.runOnUiThread(java.lang.Runnable {
-                recipeAdapter.notifyDataSetChanged()
-            })
-            index+=5
-            QueryMoreSuggestionsRecursive()
-        })
 
         binding.searchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

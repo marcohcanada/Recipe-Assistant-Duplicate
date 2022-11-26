@@ -70,7 +70,7 @@ class UserManagementAPI {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
-        var jsoncontent = "{\"email\": \""+email+"\", \"ingredient\": \""+content.ingredient+"\", \"severity\": "+content.severity+"}"
+        var jsoncontent = "{\"email\": \""+email+"\", \"ingredient\": \""+content.ingredient+"\", \"metric\": \""+content.metric+"\", \"amount\":"+content.amount+", \"severity\": "+content.severity+"}"
         var body:RequestBody = RequestBody.create(JSON, jsoncontent);
         /*val formBody: RequestBody = FormBody.Builder()
             //.add("email", "adriangonzalezmadruga@gmail.com")
@@ -86,7 +86,7 @@ class UserManagementAPI {
                 println(e.stackTrace)
             }
             override fun onResponse(call: Call, response: Response) {
-
+                println("")
             }
         })
     }

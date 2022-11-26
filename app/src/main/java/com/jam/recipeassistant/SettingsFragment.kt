@@ -16,8 +16,8 @@ import com.jam.recipeassistant.model.Shared.SimpleStringList
 import com.jam.recipeassistant.model.Suggestions.DetailedRecipeCard
 import com.jam.recipeassistant.model.UserManagement.Intolerances
 import android.widget.ArrayAdapter
-
-
+import android.widget.TextView
+import android.widget.Toast
 
 
 class SettingsFragment : Fragment() {
@@ -39,32 +39,48 @@ class SettingsFragment : Fragment() {
         lvIngredients.adapter = adapter1
         UserManagementAPI().GetUserIntolerances(activity?.getFilesDir()!!.path, fun(input: MutableList<Intolerances>) {
                 activity?.runOnUiThread(java.lang.Runnable {
-                    ingredientItems.addAll(input.map { it.ingredient + ",     Severity: " + (if (it.severity == 0) "Show" else (if (it.severity == 1) "Warn" else "Hide"))  })
-                    adapter1.notifyDataSetChanged();
+                    ingredientItems.addAll(input.map { (if (it.severity == 1) "Warn" else "Hide") + " When Recipe " + (if (it.metric == null) "Contains" else "Uses More Than " + it.amount + " " + it.metric + " Of" ) + " " + it.ingredient})
+                    adapter1.notifyDataSetChanged()
                 })
 
         })
         binding.addIntolerance.setOnClickListener {
-            /*UserManagementAPI().AddIntolerance(activity?.getFilesDir()!!.path, Intolerances(ingredient = binding.editTextIngredientName.text.toString(), severity = binding.seekBar.progress))
-            var listItem : String = "";
-            for(i in ingredientItems) {
-                if (i.contains(binding.editTextIngredientName.text)) {
-                    listItem = i
-                    break
-                }
+            var contentOk = true;
+            if((binding.spinnerIngredient.selectedItem).toString() == "Select One") {
+                Toast.makeText(requireActivity(), "Select an Ingredient", Toast.LENGTH_LONG).show()
+                contentOk = false
             }
-            if (listItem.isNotEmpty()) {
-                ingredientItems.remove(listItem)
+            if(((binding.spinnerMetric.selectedItem).toString() != "Select One" && binding.editTextTextQuantity.text.toString().length == 0) || (binding.spinnerMetric.selectedItem).toString() == "Select One" && binding.editTextTextQuantity.text.toString().length > 0) {
+                Toast.makeText(requireActivity(), "You Must Select None or Both an Amount and Metric", Toast.LENGTH_LONG).show()
+                contentOk = false
             }
-            ingredientItems.add(binding.editTextIngredientName.text.toString() + ",     Severity: " + (if (binding.seekBar.progress == 0) "Show" else (if (binding.seekBar.progress == 1) "Warn" else "Hide")))
-            binding.editTextIngredientName.setText("")
-            adapter1.notifyDataSetChanged()*/
+            if(contentOk) {
+                UserManagementAPI().AddIntolerance(
+                    activity?.getFilesDir()!!.path, Intolerances(
+                        ingredient = (binding.spinnerIngredient.selectedItem).toString(),
+                        metric = if ((binding.spinnerMetric.selectedItem).toString() == "Select One") null else (binding.spinnerMetric.selectedItem).toString(),
+                        amount = if (binding.editTextTextQuantity.text.toString().isEmpty()) null else Integer.parseInt(binding.editTextTextQuantity.text.toString()).toDouble(),
+                        severity = binding.seekBar.progress
+                    )
+                );
+
+                UserManagementAPI().GetUserIntolerances(
+                    activity?.getFilesDir()!!.path,
+                    fun(input: MutableList<Intolerances>) {
+                        activity?.runOnUiThread(java.lang.Runnable {
+                            ingredientItems.clear()
+                            ingredientItems.addAll(input.map { (if (it.severity == 1) "Warn" else "Hide") + " When Recipe " + (if (it.metric == null) "Contains" else ("Uses More Than " + it.amount + " " + it.metric + " Of")) + " " + it.ingredient })
+                            adapter1.notifyDataSetChanged()
+                        })
+
+                    })
+            }
         }
 
         RecipeManagementAPI().GetAllIngredientNames(fun(input:SimpleStringList) {
             activity?.runOnUiThread(java.lang.Runnable {
                 var ItemList: MutableList<String> = input.Items.toMutableList()
-                ItemList.add(0, "Select an Ingredient")
+                ItemList.add(0, "Select One")
                 val adapter: ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item, ItemList)
                 binding.spinnerIngredient.adapter = adapter
             })
@@ -72,7 +88,7 @@ class SettingsFragment : Fragment() {
 
         RecipeManagementAPI().GetAllIngredientUnits(fun(input:SimpleStringList) {
             var ItemList: MutableList<String> = input.Items.toMutableList()
-            ItemList.add(0, "Select a Metric")
+            ItemList.add(0, "Select One")
             activity?.runOnUiThread(java.lang.Runnable {
                 val adapter: ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), R.layout.simple_spinner_item, ItemList)
                 binding.spinnerMetric.adapter = adapter

@@ -138,7 +138,7 @@
                             android:gravity="left"
                             android:layout_gravity="left"
                             android:layout_weight="1"
-                            android:text="Show" />
+                            android:text="Remove" />
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="wrap_content"
