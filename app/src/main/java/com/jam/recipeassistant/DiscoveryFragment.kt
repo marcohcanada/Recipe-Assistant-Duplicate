@@ -77,7 +77,7 @@ class DiscoveryFragment : Fragment() {
                 })
                 QueryMoreSuggestionsRecursive()
             })
-            index+=5
+            index+=6
         }
         if (index == 0) {
             index = 0
@@ -109,7 +109,7 @@ class DiscoveryFragment : Fragment() {
                     activity?.runOnUiThread(java.lang.Runnable {
                         recipeAdapter.notifyDataSetChanged()
                     })
-                    index += 5
+                    index += 6
                     QueryMoreSuggestionsRecursive()
                 })
             /*Thread {

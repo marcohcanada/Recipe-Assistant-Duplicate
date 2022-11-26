@@ -94,7 +94,7 @@ class UserManagementAPI {
     public fun CreateNewUser(newUser: NewUser) {
         var JSON = "application/json; charset=utf-8".toMediaType()
         var body:RequestBody = RequestBody.create(JSON,
-            "{\"UserName\": \""+newUser.UserName+"\", \"Email\":\""+newUser.Email+"\", \"Email\":\""+newUser.Password+"\", \"FirstName\":\""+newUser.FirstName+"\", \"LastName\":\""+newUser.LastName+"\", \"AddressLine\":\""+newUser.AddressLine+"\", \"City\":\""+newUser.City+"\", \"State\":\""+newUser.State+"\", \"PostalCode\":\""+newUser.PostalCode+"\", \"Country\":\""+newUser.Country+"\"}");
+            "{\"UserName\": \""+newUser.UserName+"\", \"Email\":\""+newUser.Email+"\", \"Password\":\""+newUser.Password+"\", \"FirstName\":\""+newUser.FirstName+"\", \"LastName\":\""+newUser.LastName+"\", \"AddressLine\":\""+newUser.AddressLine+"\", \"City\":\""+newUser.City+"\", \"State\":\""+newUser.State+"\", \"PostalCode\":\""+newUser.PostalCode+"\", \"Country\":\""+newUser.Country+"\"}");
         val request: Request = Request.Builder()
             .url("http://52.186.139.166/UserManagement/CreateUser")
             .post(body)

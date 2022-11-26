@@ -86,21 +86,21 @@
             android:padding="20dp" />
 
         <EditText
-            android:id="@+id/state"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:drawablePadding="20dp"
-            android:hint="State"
-            android:padding="20dp" />
-
-        <EditText
             android:id="@+id/postalcode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:drawablePadding="20dp"
             android:hint="Postal Code"
+            android:padding="20dp" />
+
+        <EditText
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawablePadding="20dp"
+            android:hint="State"
             android:padding="20dp" />
 
         <EditText
