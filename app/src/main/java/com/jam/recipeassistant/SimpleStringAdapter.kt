@@ -37,6 +37,19 @@ class SimpleStringAdapter(ctx: Context, private val simpleStringArrayList: Mutab
         notifyDataSetChanged()
     }
 
+    fun getAsJson(): String {
+        var json = "["
+        for (i in 0..simpleStringArrayList.count()-1) {
+            json += ("\"" + simpleStringArrayList[i] + "\"" + (if (i == simpleStringArrayList.count()-1) "" else ","))
+        }
+        return json + "]";
+    }
+
+    fun deleteItem(index: Int) {
+        simpleStringArrayList.removeAt(index)
+        notifyDataSetChanged()
+    }
+
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var simpleString: TextView

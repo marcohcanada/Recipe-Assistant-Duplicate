@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.jam.recipeassistant.DetailsFragment"
-        android:label="fragment_details"
+        android:label="Recipe Details"
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_detailsFragment_to_detailsFragment"
@@ -117,5 +117,8 @@
         <action
             android:id="@+id/action_createRecipeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_createRecipeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

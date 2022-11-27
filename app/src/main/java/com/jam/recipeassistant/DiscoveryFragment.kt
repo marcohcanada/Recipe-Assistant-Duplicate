@@ -32,7 +32,7 @@ class DiscoveryFragment : Fragment() {
     var warningsItems :MutableList<String> = ArrayList()
     var SearchDetailStringItems :MutableList<String> = ArrayList()
     var index :Int = 0
-    var stopFlag = false;
+    var stopFlag = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,60 +58,121 @@ class DiscoveryFragment : Fragment() {
 
         fun QueryMoreSuggestionsRecursive () {
             SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, index, fun(input:MutableList<DetailedRecipeCard>) {
-                recipeCards = input;
+
+                recipeCards.addAll(input);
                 if(input.size == 0) {
                     return
                 }
-                recipeItems.addAll(input.map { it.RecipeName })
-                authorItems.addAll(input.map { it.CreateUserName })
-                imgItems.addAll(input.map { it.RecipeImage })
-                imgTypeItems.addAll(input.map { it.RecipeImageType })
-                likesItems.addAll(input.map { "Likes: " + it.Likes })
-                dislikesItems.addAll(input.map { "Dislikes: " + it.Dislikes })
-                viewsItems.addAll(input.map { "Views: " + it.Views })
-                ratingItems.addAll(input.map { "Rating: " + it.Rating })
-                warningsItems.addAll(input.map { if (it.Severity == 1) "⚠ Warning ⚠" else ""  })
-                SearchDetailStringItems.addAll(input.map { it.SearchDetailString })
                 activity?.runOnUiThread(java.lang.Runnable {
-                    recipeAdapter.notifyDataSetChanged()
+                    recipeItems.clear()
+                    authorItems.clear()
+                    imgItems.clear()
+                    imgTypeItems.clear()
+                    likesItems.clear()
+                    dislikesItems.clear()
+                    viewsItems.clear()
+                    ratingItems.clear()
+                    warningsItems.clear()
+                    SearchDetailStringItems.clear()
+                    var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
+                    for (i in 0..recipeCards.size - 1) {
+                        var addFlag = true
+                        for (j in 0..searchItems.size - 1) {
+                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                                addFlag = false
+                            }
+                        }
+                        if(addFlag) {
+                            recipeItems.add(recipeCards[i].RecipeName)
+                            authorItems.add(recipeCards[i].CreateUserName)
+                            imgItems.add(recipeCards[i].RecipeImage)
+                            imgTypeItems.add(recipeCards[i].RecipeImageType)
+                            likesItems.add( "Likes: " + recipeCards[i].Likes )
+                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                            viewsItems.add("Views: " + recipeCards[i].Views )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating )
+                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+
+                                recipeAdapter.notifyDataSetChanged()
+
+                        }
+                    }
                 })
                 QueryMoreSuggestionsRecursive()
             })
             index+=6
         }
+
         if (index == 0) {
             index = 0
             SuggestionsAPI().getGeneralSuggestion(
                 activity?.getFilesDir()!!.path,
                 index,
                 fun(input: MutableList<DetailedRecipeCard>) {
-                    recipeCards = input;
+                    recipeCards = input
                     recipeItems.clear()
-                    recipeItems.addAll(input.map { it.RecipeName })
                     authorItems.clear()
-                    authorItems.addAll(input.map { it.CreateUserName })
                     imgItems.clear()
-                    imgItems.addAll(input.map { it.RecipeImage })
                     imgTypeItems.clear()
-                    imgTypeItems.addAll(input.map { it.RecipeImageType })
                     likesItems.clear()
-                    likesItems.addAll(input.map { "Likes: " + it.Likes })
                     dislikesItems.clear()
-                    dislikesItems.addAll(input.map { "Dislikes: " + it.Dislikes })
                     viewsItems.clear()
-                    viewsItems.addAll(input.map { "Views: " + it.Views })
                     ratingItems.clear()
-                    ratingItems.addAll(input.map { "Rating: " + it.Rating })
                     warningsItems.clear()
-                    warningsItems.addAll(input.map { if (it.Severity == 1) "⚠ Warning ⚠" else "" })
                     SearchDetailStringItems.clear()
-                    SearchDetailStringItems.addAll(input.map { it.SearchDetailString })
-                    activity?.runOnUiThread(java.lang.Runnable {
-                        recipeAdapter.notifyDataSetChanged()
-                    })
+                    var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
+                    for (i in 0..recipeCards.size - 1) {
+                        var addFlag = true
+                        for (j in 0..searchItems.size - 1) {
+                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                                addFlag = false
+                            }
+                        }
+                        if(addFlag) {
+                            recipeItems.add(recipeCards[i].RecipeName)
+                            authorItems.add(recipeCards[i].CreateUserName)
+                            imgItems.add(recipeCards[i].RecipeImage)
+                            imgTypeItems.add(recipeCards[i].RecipeImageType)
+                            likesItems.add( "Likes: " + recipeCards[i].Likes )
+                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                            viewsItems.add("Views: " + recipeCards[i].Views )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating )
+                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+                            activity?.runOnUiThread(java.lang.Runnable {
+                                recipeAdapter.notifyDataSetChanged()
+                            })
+                        }
+                    }
                     index += 6
                     QueryMoreSuggestionsRecursive()
                 })
+
+            /*var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
+            for (i in 0..recipeCards.size - 1) {
+                var addFlag = true
+                for (j in 0..searchItems.size - 1) {
+                    if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                        addFlag = false
+                    }
+                }
+                if(addFlag) {
+                    recipeItems.add(recipeCards[i].RecipeName)
+                    authorItems.add(recipeCards[i].CreateUserName)
+                    imgItems.add(recipeCards[i].RecipeImage)
+                    imgTypeItems.add(recipeCards[i].RecipeImageType)
+                    likesItems.add( "Likes: " + recipeCards[i].Likes )
+                    dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                    viewsItems.add("Views: " + recipeCards[i].Views )
+                    ratingItems.add("Rating: " + recipeCards[i].Rating )
+                    warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                    SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        recipeAdapter.notifyDataSetChanged()
+                    })
+                }
+            }*/
             /*Thread {
                 Thread.sleep(1000)
                 activity?.runOnUiThread(java.lang.Runnable {
@@ -123,15 +184,82 @@ class DiscoveryFragment : Fragment() {
 
         binding.searchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.searchView.clearFocus()
+                /*binding.searchView.clearFocus()
                 if ((recipeCards.map { it.RecipeName }).contains(query)){
                     recipeAdapter.filter.filter(query)
+                }*/
+                recipeItems.clear()
+                authorItems.clear()
+                imgItems.clear()
+                imgTypeItems.clear()
+                likesItems.clear()
+                dislikesItems.clear()
+                viewsItems.clear()
+                ratingItems.clear()
+                warningsItems.clear()
+                SearchDetailStringItems.clear()
+                var searchItems : Array<String> = query!!.split(" ").toTypedArray()
+                for (i in 0..recipeCards.size - 1) {
+                    var addFlag = true
+                    for (j in 0..searchItems.size - 1) {
+                        if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                            addFlag = false
+                        }
+                    }
+                    if(addFlag) {
+                        recipeItems.add(recipeCards[i].RecipeName)
+                        authorItems.add(recipeCards[i].CreateUserName)
+                        imgItems.add(recipeCards[i].RecipeImage)
+                        imgTypeItems.add(recipeCards[i].RecipeImageType)
+                        likesItems.add( "Likes: " + recipeCards[i].Likes )
+                        dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                        viewsItems.add("Views: " + recipeCards[i].Views )
+                        ratingItems.add("Rating: " + recipeCards[i].Rating )
+                        warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                        SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+                        activity?.runOnUiThread(java.lang.Runnable {
+                            recipeAdapter.notifyDataSetChanged()
+                        })
+                    }
                 }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                recipeAdapter.filter.filter(newText)
+                recipeItems.clear()
+                authorItems.clear()
+                imgItems.clear()
+                imgTypeItems.clear()
+                likesItems.clear()
+                dislikesItems.clear()
+                viewsItems.clear()
+                ratingItems.clear()
+                warningsItems.clear()
+                SearchDetailStringItems.clear()
+                var searchItems : Array<String> = newText!!.split(" ").toTypedArray()
+                for (i in 0..recipeCards.size - 1) {
+                    var addFlag = true
+                    for (j in 0..searchItems.size - 1) {
+                        if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                            addFlag = false
+                        }
+                    }
+                    if(addFlag) {
+                        recipeItems.add(recipeCards[i].RecipeName)
+                        authorItems.add(recipeCards[i].CreateUserName)
+                        imgItems.add(recipeCards[i].RecipeImage)
+                        imgTypeItems.add(recipeCards[i].RecipeImageType)
+                        likesItems.add( "Likes: " + recipeCards[i].Likes )
+                        dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                        viewsItems.add("Views: " + recipeCards[i].Views )
+                        ratingItems.add("Rating: " + recipeCards[i].Rating )
+                        warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                        SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+                        activity?.runOnUiThread(java.lang.Runnable {
+                            recipeAdapter.notifyDataSetChanged()
+                        })
+                    }
+                }
                 return false
             }
 

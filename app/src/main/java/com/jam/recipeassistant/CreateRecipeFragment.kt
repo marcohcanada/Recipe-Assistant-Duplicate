@@ -36,6 +36,7 @@ import kotlin.collections.ArrayList
 import android.graphics.drawable.BitmapDrawable
 import android.nfc.Tag
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.fragment.findNavController
 
 
 class CreateRecipeFragment : Fragment() {
@@ -43,6 +44,7 @@ class CreateRecipeFragment : Fragment() {
     lateinit var binding: FragmentCreateRecipeBinding
     lateinit var adapter1: IngredientAdapter
     lateinit var adapter2: StepAdapter
+    lateinit var adapter3: SimpleStringAdapter
     var ingredientItems :MutableList<String> = ArrayList()
     var stepNumberItems :MutableList<String> = ArrayList()
     var tagItems :MutableList<String> = ArrayList()
@@ -73,6 +75,12 @@ class CreateRecipeFragment : Fragment() {
         adapter2 = stepAdapter
         lvSteps.adapter = adapter2
 
+        val TagAdapter = SimpleStringAdapter(requireActivity(), tagItems)
+
+        val lvTags = binding.recyclerViewTags
+        adapter3 = TagAdapter
+        lvTags.adapter = adapter3
+
         binding.addIngredient.setOnClickListener {
             ingredientItems.add((binding.editTextTextQuantity.text.toString() + " " + binding.editTextTextMetric.text + " " + binding.editTextTextIngredient.text));
             binding.editTextTextQuantity.setText("")
@@ -82,8 +90,10 @@ class CreateRecipeFragment : Fragment() {
         }
 
         binding.removeIngredient.setOnClickListener {
-            adapter1.deleteItem(index = adapter1.itemCount - 1)
-            adapter1.notifyDataSetChanged()
+            if (adapter1.itemCount != 0) {
+                adapter1.deleteItem(index = adapter1.itemCount - 1)
+                adapter1.notifyDataSetChanged()
+            }
         }
 
         /*binding.btnAddImage.setOnClickListener {
@@ -123,8 +133,23 @@ class CreateRecipeFragment : Fragment() {
         }
 
         binding.removeSteps.setOnClickListener {
-            adapter2.deleteItem(index = adapter2.itemCount - 1)
-            adapter2.notifyDataSetChanged()
+            if (adapter2.itemCount != 0) {
+                adapter2.deleteItem(index = adapter2.itemCount - 1)
+                adapter2.notifyDataSetChanged()
+            }
+        }
+
+        binding.addTag.setOnClickListener {
+            tagItems.add(binding.editTextTextTag.text.toString())
+            binding.editTextTextTag.setText("")
+            adapter3.notifyDataSetChanged()
+        }
+
+        binding.removeTag.setOnClickListener {
+            if (adapter3.itemCount != 0) {
+                adapter3.deleteItem(index = adapter3.itemCount - 1)
+                adapter3.notifyDataSetChanged()
+            }
         }
 
         binding.CreateRecipe.setOnClickListener {
@@ -134,6 +159,7 @@ class CreateRecipeFragment : Fragment() {
             val tempbitmap = bitmap
             tempbitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
             val b: ByteArray = baos.toByteArray()
+            //val byteString = b.map({it.toString()}).joinToString(separator = ",")
 
             var json = "{\n" +
                     "  \"recipeId\": 0,\n" +
@@ -146,7 +172,7 @@ class CreateRecipeFragment : Fragment() {
                     "  \"dislikes\": 0,\n" +
                     "  \"views\": 0,\n" +
                     "  \"severity\": 0,\n" +
-                    "  \"recipeDetailsTags\": [\"test\"],\n" +
+                    "  \"recipeDetailsTags\": " + adapter3.getAsJson() + ",\n" +
                     "  \"monetaryScale\": "+binding.ratingBarMonetaryScale.progress+",\n" +
                     "  \"recipeIngredients\": [\n";
             json += (adapter1.getAsJson().substring(0, adapter1.getAsJson().length-1) + "\n],\n")
@@ -154,6 +180,18 @@ class CreateRecipeFragment : Fragment() {
 
             json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson().substring(0, adapter2.getAsJson().length-1) + "\n]\n}")
             RecipeManagementAPI().CreateNewRecipe(json)
+
+            val recipeName = binding.editTextTextRecipeName.text.toString()
+            binding.editTextTextQuantity.setText("")
+            binding.editTextTextMetric.setText("")
+            binding.editTextTextIngredient.setText("")
+            binding.editTextTextTag.setText("")
+            binding.editTextTextStep.setText("")
+            binding.editTextTextRecipeName.setText("")
+            binding.editTextTextDescription.setText("")
+            binding.ratingBarMonetaryScale.rating = 0.0f
+            val action = CreateRecipeFragmentDirections.actionCreateRecipeFragmentToDetailsFragment("", recipeName, "")
+            findNavController().navigate(action)
         }
 
         return binding.root

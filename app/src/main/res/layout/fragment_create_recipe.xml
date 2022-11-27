@@ -56,7 +56,6 @@
                     android:id="@+id/ratingBarMonetaryScale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:numStars="5"/>
 
                 <!--<SeekBar
@@ -149,21 +148,70 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/addSteps"
-                    android:layout_width="187.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
                     android:text="Add Step" />
 
                 <Button
                     android:id="@+id/removeSteps"
-                    android:layout_width="187.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
                     android:text="Remove Step" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextTextTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Tag"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:text="Add Tag" />
+
+                <Button
+                    android:id="@+id/removeTag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:text="Remove Tag" />
 
             </LinearLayout>
 
@@ -188,14 +236,18 @@
 
                 <Button
                     android:id="@+id/btnAddImageFromCamera"
-                    android:layout_width="187.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
                     android:text="Add Image From Camera"/>
 
                 <Button
                     android:id="@+id/btnAddImageFromGallery"
-                    android:layout_width="187.5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
                     android:text="Add Image From Gallery"/>
 
             </LinearLayout>

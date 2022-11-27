@@ -19,10 +19,10 @@
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_build_recipe.xml" value="0.19635416666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_chatbot.xml" value="0.20520833333333333" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create.xml" value="0.2015625" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create_recipe.xml" value="0.33" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_create_recipe.xml" value="0.3021120293847567" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_details.xml" value="0.33" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discover.xml" value="0.33" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discovery.xml" value="0.20520833333333333" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_discovery.xml" value="0.16" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_grocery_comparison.xml" value="0.19791666666666666" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_makerecipe.xml" value="0.25052083333333336" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/fragment_my_list.xml" value="0.19791666666666666" />
@@ -36,7 +36,7 @@
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/simple_string_list_item.xml" value="0.23007246376811594" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_created_recipe_row_layout.xml" value="0.1" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_recipe_row_layout.xml" value="0.25" />
-        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_user_recipe_row.xml" value="0.1" />
+        <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/single_user_recipe_row.xml" value="0.33" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/layout/user_message_layout.xml" value="0.17255434782608695" />
         <entry key="..\:/Recipe-Assistant/app/src/main/res/xml/network_security_config.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Joel J. Gnanasekaram/StudioProjects/Recipe-Assistant/app/src/main/res/layout/fragment_my_list.xml" value="0.11145833333333334" />

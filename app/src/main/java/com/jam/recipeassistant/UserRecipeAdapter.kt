@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.util.Base64
 import android.widget.Button
+import androidx.navigation.NavController
 import com.jam.recipeassistant.api.RecipeManagementAPI
 import com.squareup.picasso.Picasso
 import java.io.ByteArrayInputStream
@@ -33,7 +34,6 @@ class UserRecipeAdapter(private val context: Activity, private val img: MutableL
         val imageView = rowView.findViewById(R.id.ivRecipe) as ImageView
         val nameText = rowView.findViewById(R.id.tvRecipe) as TextView
         val authorText = rowView.findViewById(R.id.tvAuthor) as TextView
-
         if(imgType[position] == "WEB") {
             Picasso.with(context).load(img[position]).resize(250, 250).into(imageView);
         } else if (imgType[position] == "SVG") {
@@ -57,6 +57,12 @@ class UserRecipeAdapter(private val context: Activity, private val img: MutableL
                 adapterContext.notifyDataSetChanged()
             }
         })
+
+        /*val editButton = rowView.findViewById(R.id.editButton) as Button
+        editButton.setOnClickListener(object : View.OnClickListener {
+            val action = MyRecipesFragmentDirections.actionMyRecipesFragmentToDetailsFragment(img[position], name[position], author[position])
+
+        })*/
         /*rowView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 if (position == 0 || position == 1) {

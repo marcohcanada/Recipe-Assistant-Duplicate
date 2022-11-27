@@ -19,12 +19,13 @@
                 android:id="@+id/ivRecipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:src="@drawable/beefwellington"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginHorizontal="5dp"
                 android:orientation="vertical"
                 android:layout_weight="1">
 
@@ -47,12 +48,22 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/editButton"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Edit"
+                android:layout_marginRight="10px"
+                android:layout_gravity="center"
+                android:textSize="10sp"/>
+
+            <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:text="Del"
                 android:layout_marginRight="10px"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:textSize="10sp"/>
 
         </LinearLayout>
     </LinearLayout>

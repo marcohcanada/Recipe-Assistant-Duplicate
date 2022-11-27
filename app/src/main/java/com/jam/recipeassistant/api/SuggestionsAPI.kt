@@ -43,7 +43,7 @@ class SuggestionsAPI {
         })
     }
 
-    public fun GetUsersRecipesByUser(getFilesDirPath :String, callback: (input : MutableList<RecipeCard>) -> Unit) {
+    public fun GetUsersRecipesByUser(getFilesDirPath :String, callback: (input : MutableList<DetailedRecipeCard>) -> Unit) {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
@@ -63,7 +63,7 @@ class SuggestionsAPI {
             }
             override fun onResponse(call: Call, response: Response) {
                 val body:ResponseBody? = response.body
-                callback((Json.decodeFromString<List<RecipeCard>>(body!!.string())).toMutableList());
+                callback((Json.decodeFromString<List<DetailedRecipeCard>>(body!!.string())).toMutableList());
 
             }
         })
