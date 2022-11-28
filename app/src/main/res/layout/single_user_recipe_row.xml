@@ -47,14 +47,14 @@
 
             </LinearLayout>
 
-            <Button
+            <!--<Button
                 android:id="@+id/editButton"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:text="Edit"
                 android:layout_marginRight="10px"
                 android:layout_gravity="center"
-                android:textSize="10sp"/>
+                android:textSize="10sp"/>-->
 
             <Button
                 android:id="@+id/deleteButton"

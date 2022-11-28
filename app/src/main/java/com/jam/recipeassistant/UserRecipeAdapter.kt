@@ -42,7 +42,12 @@ class UserRecipeAdapter(private val context: Activity, private val img: MutableL
             val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
             imageView.setImageBitmap(bitmap)
         } else if(imgType[position] == "BYTEARRAY") {
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(img[position].toByteArray(), 0, img[position].toByteArray().size))
+            val s = img[position].split(',')
+            var byteArray:ByteArray = ByteArray(s.size)
+            for (i in 0..s.size-1) {
+                byteArray.set(i,Integer.parseInt(s[i]).toByte())
+            }
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
         }
         nameText.text = name[position]
         authorText.text = author[position]

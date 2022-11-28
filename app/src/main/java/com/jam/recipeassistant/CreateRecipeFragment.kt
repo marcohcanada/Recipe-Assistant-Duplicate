@@ -37,6 +37,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.nfc.Tag
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.fragment.findNavController
+import kotlin.concurrent.thread
 
 
 class CreateRecipeFragment : Fragment() {
@@ -49,6 +50,8 @@ class CreateRecipeFragment : Fragment() {
     var stepNumberItems :MutableList<String> = ArrayList()
     var tagItems :MutableList<String> = ArrayList()
     var stepItems :MutableList<String> = ArrayList()
+    var imgLoadingFlag = false
+    var imByteString = ""
     //val pickImage = 100
     //var imageUri: Uri? = null
     //val pickImage = 100
@@ -153,45 +156,52 @@ class CreateRecipeFragment : Fragment() {
         }
 
         binding.CreateRecipe.setOnClickListener {
+            if(!imgLoadingFlag) {
+                val bitmap = binding.ivAddImage.getDrawable().toBitmap()
+                val baos = ByteArrayOutputStream()
+                val tempbitmap = bitmap
+                tempbitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
+                val b: ByteArray = baos.toByteArray()
+                var s: String = ""
+                for (i in 0..b.size - 1) {
+                    s += (b[i].toString() + (if (i == b.size - 1) "" else ","))
+                }
+                //val byteString = b.map({ it.toString() }).joinToString(separator = ",")
 
-            val bitmap = binding.ivAddImage.getDrawable().toBitmap()
-            val baos = ByteArrayOutputStream()
-            val tempbitmap = bitmap
-            tempbitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-            val b: ByteArray = baos.toByteArray()
-            //val byteString = b.map({it.toString()}).joinToString(separator = ",")
-
-            var json = "{\n" +
-                    "  \"recipeId\": 0,\n" +
-                    "  \"recipeName\": \""+binding.editTextTextRecipeName.text+"\",\n" +
-                    "  \"recipeImage\": \""+b.toString()+"\",\n" +
-                    "  \"recipeImageType\": \"BYTEARRAY\",\n" +
-                    "  \"recipeDescription\": \""+binding.editTextTextDescription.text+"\",\n" +
-                    "  \"createUserName\": \"Adrian\",\n" +
-                    "  \"likes\": 0,\n" +
-                    "  \"dislikes\": 0,\n" +
-                    "  \"views\": 0,\n" +
-                    "  \"severity\": 0,\n" +
-                    "  \"recipeDetailsTags\": " + adapter3.getAsJson() + ",\n" +
-                    "  \"monetaryScale\": "+binding.ratingBarMonetaryScale.progress+",\n" +
-                    "  \"recipeIngredients\": [\n";
-            json += (adapter1.getAsJson().substring(0, adapter1.getAsJson().length-1) + "\n],\n")
+                var json = "{\n" +
+                        "  \"recipeId\": 0,\n" +
+                        "  \"recipeName\": \"" + binding.editTextTextRecipeName.text + "\",\n" +
+                        "  \"recipeImage\": \"" + s + "\",\n" +
+                        "  \"recipeImageType\": \"BYTEARRAY\",\n" +
+                        "  \"recipeDescription\": \"" + binding.editTextTextDescription.text + "\",\n" +
+                        "  \"createUserName\": \"Adrian\",\n" +
+                        "  \"likes\": 0,\n" +
+                        "  \"dislikes\": 0,\n" +
+                        "  \"views\": 0,\n" +
+                        "  \"severity\": 0,\n" +
+                        "  \"recipeDetailsTags\": " + adapter3.getAsJson() + ",\n" +
+                        "  \"monetaryScale\": " + binding.ratingBarMonetaryScale.progress + ",\n" +
+                        "  \"recipeIngredients\": [\n";
+                json += (adapter1.getAsJson()
+                    .substring(0, adapter1.getAsJson().length - 1) + "\n],\n")
 
 
-            json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson().substring(0, adapter2.getAsJson().length-1) + "\n]\n}")
-            RecipeManagementAPI().CreateNewRecipe(json)
+                json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson()
+                    .substring(0, adapter2.getAsJson().length - 1) + "\n]\n}")
+                RecipeManagementAPI().CreateNewRecipe(json)
 
-            val recipeName = binding.editTextTextRecipeName.text.toString()
-            binding.editTextTextQuantity.setText("")
-            binding.editTextTextMetric.setText("")
-            binding.editTextTextIngredient.setText("")
-            binding.editTextTextTag.setText("")
-            binding.editTextTextStep.setText("")
-            binding.editTextTextRecipeName.setText("")
-            binding.editTextTextDescription.setText("")
-            binding.ratingBarMonetaryScale.rating = 0.0f
-            val action = CreateRecipeFragmentDirections.actionCreateRecipeFragmentToDetailsFragment("", recipeName, "")
-            findNavController().navigate(action)
+                val recipeName = binding.editTextTextRecipeName.text.toString()
+                binding.editTextTextQuantity.setText("")
+                binding.editTextTextMetric.setText("")
+                binding.editTextTextIngredient.setText("")
+                binding.editTextTextTag.setText("")
+                binding.editTextTextStep.setText("")
+                binding.editTextTextRecipeName.setText("")
+                binding.editTextTextDescription.setText("")
+                binding.ratingBarMonetaryScale.rating = 0.0f
+                val action = CreateRecipeFragmentDirections.actionCreateRecipeFragmentToDetailsFragment("", recipeName, "")
+                findNavController().navigate(action)
+            }
         }
 
         return binding.root
@@ -297,13 +307,11 @@ class CreateRecipeFragment : Fragment() {
                 }
 
                 galleryRequestCode -> {
-
                     binding.ivAddImage.load(data?.data) {
                         crossfade(true)
                         crossfade(1000)
                         transformations(CircleCropTransformation())
                     }
-
                 }
             }
 

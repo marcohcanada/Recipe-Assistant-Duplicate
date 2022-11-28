@@ -99,7 +99,12 @@ class DetailsFragment : Fragment() {
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.image.setImageBitmap(bitmap)
                 } else if(input.RecipeImageType == "BYTEARRAY") {
-                    binding.image.setImageBitmap(BitmapFactory.decodeByteArray(input.RecipeImage.toByteArray(), 0, input.RecipeImage.toByteArray().size))
+                    val s = input.RecipeImage.split(',')
+                    var byteArray:ByteArray = ByteArray(s.size)
+                    for (i in 0..s.size-1) {
+                        byteArray.set(i,Integer.parseInt(s[i]).toByte())
+                    }
+                    binding.image.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
                 }
 
                 if(input.AllowReview == 1) {
@@ -131,7 +136,12 @@ class DetailsFragment : Fragment() {
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.recImage1.setImageBitmap(bitmap)
                 } else if(input[0].RecipeImageType == "BYTEARRAY") {
-                    binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(input[0].RecipeImage.toByteArray(), 0, input[0].RecipeImage.toByteArray().size))
+                    val s = input[0].RecipeImage.split(',')
+                    var byteArray:ByteArray = ByteArray(s.size)
+                    for (i in 0..s.size-1) {
+                        byteArray.set(i,Integer.parseInt(s[i]).toByte())
+                    }
+                    binding.recImage1.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
                 }
                 binding.suggestion1.setOnClickListener {
                     val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[0].RecipeName, "")
@@ -147,7 +157,12 @@ class DetailsFragment : Fragment() {
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.recImage2.setImageBitmap(bitmap)
                 } else if(input[1].RecipeImageType == "BYTEARRAY") {
-                    binding.recImage2.setImageBitmap(BitmapFactory.decodeByteArray(input[1].RecipeImage.toByteArray(), 0, input[1].RecipeImage.toByteArray().size))
+                    val s = input[1].RecipeImage.split(',')
+                    var byteArray:ByteArray = ByteArray(s.size)
+                    for (i in 0..s.size-1) {
+                        byteArray.set(i,Integer.parseInt(s[i]).toByte())
+                    }
+                    binding.recImage2.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
                 }
                 binding.suggestion2.setOnClickListener {
                     val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[1].RecipeName, "")
@@ -163,7 +178,12 @@ class DetailsFragment : Fragment() {
                     val bitmap: Bitmap = BitmapFactory.decodeStream(inputStream)
                     binding.recImage3.setImageBitmap(bitmap)
                 } else if(input[2].RecipeImageType == "BYTEARRAY") {
-                    binding.recImage3.setImageBitmap(BitmapFactory.decodeByteArray(input[2].RecipeImage.toByteArray(), 0, input[2].RecipeImage.toByteArray().size))
+                    val s = input[2].RecipeImage.split(',')
+                    var byteArray:ByteArray = ByteArray(s.size)
+                    for (i in 0..s.size-1) {
+                        byteArray.set(i,Integer.parseInt(s[i]).toByte())
+                    }
+                    binding.recImage3.setImageBitmap(BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size))
                 }
                 binding.suggestion3.setOnClickListener {
                     val action = DetailsFragmentDirections.actionDetailsFragmentToDetailsFragment("", input[2].RecipeName, "")
