@@ -33,8 +33,8 @@ class LoginActivity : AppCompatActivity() {
         val loginbtn = findViewById<Button>(R.id.loginbtn)
         val signupbtn = findViewById<Button>(R.id.signupbtn)
 
-        email.setText("a@b.ca")
-        password.setText("123")
+        //email.setText("a@b.ca")
+        //password.setText("123")
 
         var userLogin: UserLogin
 

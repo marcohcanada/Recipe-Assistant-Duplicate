@@ -79,7 +79,7 @@ class DetailsFragment : Fragment() {
             ingredientItems.addAll(input.RecipeIngredients.map { it.RecipeIngredientAmount.toString() + " " + it.RecipeIngredientUnit + " " + it.IngredientName })
             stepNumberItems.addAll( input.RecipeSteps.map { it.StepNumber.toString() })
             stepItems.addAll( input.RecipeSteps.map { it.StepText })
-            reviewItems.addAll(input.RecipeReviews.map { "Rating: " + it.split("|").toTypedArray()[0] + "/5\n" +  it.split("|").toTypedArray()[1]})
+            reviewItems.addAll(input.RecipeReviews.map { "Rating: " + it.split("|").toTypedArray()[0].take(3) + "/5\n" +  it.split("|").toTypedArray()[1]})
             warningItems.addAll( input.SeverityItems.map { it })
             activity?.runOnUiThread(java.lang.Runnable {
 
