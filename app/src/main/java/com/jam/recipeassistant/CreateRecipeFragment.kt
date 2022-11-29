@@ -188,9 +188,16 @@ class CreateRecipeFragment : Fragment() {
 
                 json += "  \"recipeSteps\": [\n" + (adapter2.getAsJson()
                     .substring(0, adapter2.getAsJson().length - 1) + "\n]\n}")
-                RecipeManagementAPI().CreateNewRecipe(json)
 
                 val recipeName = binding.editTextTextRecipeName.text.toString()
+
+                RecipeManagementAPI().CreateNewRecipe(json, fun() {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        val action = CreateRecipeFragmentDirections.actionCreateRecipeFragmentToDetailsFragment("", recipeName, "")
+                        findNavController().navigate(action)
+                    })
+                })
+
                 binding.editTextTextQuantity.setText("")
                 binding.editTextTextMetric.setText("")
                 binding.editTextTextIngredient.setText("")
@@ -199,8 +206,7 @@ class CreateRecipeFragment : Fragment() {
                 binding.editTextTextRecipeName.setText("")
                 binding.editTextTextDescription.setText("")
                 binding.ratingBarMonetaryScale.rating = 0.0f
-                val action = CreateRecipeFragmentDirections.actionCreateRecipeFragmentToDetailsFragment("", recipeName, "")
-                findNavController().navigate(action)
+
             }
         }
 

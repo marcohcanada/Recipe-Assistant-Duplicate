@@ -38,7 +38,7 @@ class RecipeManagementAPI {
         })
     }
 
-    public fun CreateNewRecipe(jsonString:String) {
+    public fun CreateNewRecipe(jsonString:String, callback: () -> Unit) {
         var JSON = "application/json; charset=utf-8".toMediaType()
         var jsoncontent = jsonString
         var body:RequestBody = RequestBody.create(JSON, jsoncontent)
@@ -53,7 +53,7 @@ class RecipeManagementAPI {
                 println(e.stackTrace)
             }
             override fun onResponse(call: Call, response: Response) {
-
+                callback()
             }
         })
     }
