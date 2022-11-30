@@ -19,7 +19,6 @@
             android:layout_marginBottom="4dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/bot_rect_bubble"
             android:gravity="start|center_vertical"
             android:orientation="vertical">
 
@@ -27,19 +26,13 @@
                 android:id="@+id/messageTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:padding="12dp"
+                android:layout_margin="5dp"
+                android:padding="7dp"
                 android:text="abcdefgh"
-                android:textColor="@color/white"
+                android:textColor="#A202FF"
+                android:textStyle="bold"
                 android:textSize="18sp"
-                android:maxWidth="300dip"/>
-
-            <FrameLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-            </FrameLayout>
+                android:maxWidth="500dip"/>
         </LinearLayout>
     </FrameLayout>
 </layout>
