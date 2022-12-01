@@ -66,7 +66,7 @@ class UserManagementAPI {
         })
     }
 
-    public fun AddIntolerance(getFilesDirPath :String, content: Intolerances) {
+    public fun AddIntolerance(getFilesDirPath :String, content: Intolerances, callback: () -> Unit) {
         val bufferedReader: BufferedReader = File(getFilesDirPath + "/somefile.txt").bufferedReader()
         var JSON = "application/json; charset=utf-8".toMediaType()
         var email = bufferedReader.use { it.readText() }
@@ -86,7 +86,7 @@ class UserManagementAPI {
                 println(e.stackTrace)
             }
             override fun onResponse(call: Call, response: Response) {
-                println("")
+                callback()
             }
         })
     }
