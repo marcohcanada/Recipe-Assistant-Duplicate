@@ -90,7 +90,7 @@ class DiscoveryFragment : Fragment() {
                             likesItems.add( "Likes: " + recipeCards[i].Likes )
                             dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
                             viewsItems.add("Views: " + recipeCards[i].Views )
-                            ratingItems.add("Rating: " + recipeCards[i].Rating )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.take(3) )
                             warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
                             SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
 
@@ -138,7 +138,7 @@ class DiscoveryFragment : Fragment() {
                                 likesItems.add( "Likes: " + recipeCards[i].Likes )
                                 dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
                                 viewsItems.add("Views: " + recipeCards[i].Views )
-                                ratingItems.add("Rating: " + recipeCards[i].Rating )
+                                ratingItems.add("Rating: " + recipeCards[i].Rating.take(3) )
                                 warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
                                 SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
 
@@ -217,7 +217,7 @@ class DiscoveryFragment : Fragment() {
                             likesItems.add( "Likes: " + recipeCards[i].Likes )
                             dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
                             viewsItems.add("Views: " + recipeCards[i].Views )
-                            ratingItems.add("Rating: " + recipeCards[i].Rating )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.take(3))
                             warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
                             SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
 
@@ -257,7 +257,7 @@ class DiscoveryFragment : Fragment() {
                             likesItems.add( "Likes: " + recipeCards[i].Likes )
                             dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
                             viewsItems.add("Views: " + recipeCards[i].Views )
-                            ratingItems.add("Rating: " + recipeCards[i].Rating )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.take(3))
                             warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
                             SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
 
