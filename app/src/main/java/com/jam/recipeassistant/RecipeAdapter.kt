@@ -66,7 +66,7 @@ class RecipeAdapter(private val context: Activity, private val img: MutableList<
         likesText.text = likes[position]
         dislikesText.text = dislikes[position]
         viewsText.text = views[position]
-        ratingText.text = rating[position].take(3)
+        ratingText.text = rating[position]
         warningsText.text = warnings[position]
 
 
