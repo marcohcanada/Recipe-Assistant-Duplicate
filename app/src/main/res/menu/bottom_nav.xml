@@ -3,7 +3,9 @@
     <item
         android:id="@+id/discoveryFragment"
         android:title="Discovery"
-        android:icon="@drawable/discover_icon"/>
+        android:icon="@drawable/discover_icon"
+
+        />
     <item
         android:id="@+id/chatbotFragment"
         android:title="Chatbot"
