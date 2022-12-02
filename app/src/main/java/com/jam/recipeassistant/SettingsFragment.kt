@@ -61,19 +61,21 @@ class SettingsFragment : Fragment() {
                         metric = if ((binding.spinnerMetric.selectedItem).toString() == "Select One") null else (binding.spinnerMetric.selectedItem).toString(),
                         amount = if (binding.editTextTextQuantity.text.toString().isEmpty()) null else Integer.parseInt(binding.editTextTextQuantity.text.toString()).toDouble(),
                         severity = binding.seekBar.progress
-                    )
+                    ), fun() {
+                        UserManagementAPI().GetUserIntolerances(
+                            activity?.getFilesDir()!!.path,
+                            fun(input: MutableList<Intolerances>) {
+                                activity?.runOnUiThread(java.lang.Runnable {
+                                    ingredientItems.clear()
+                                    ingredientItems.addAll(input.map { (if (it.severity == 1) "Warn" else "Hide") + " When Recipe " + (if (it.metric == null) "Contains" else ("Uses More Than " + it.amount + " " + it.metric + " Of")) + " " + it.ingredient })
+                                    adapter1.notifyDataSetChanged()
+                                })
+
+                            })
+                    }
                 );
 
-                UserManagementAPI().GetUserIntolerances(
-                    activity?.getFilesDir()!!.path,
-                    fun(input: MutableList<Intolerances>) {
-                        activity?.runOnUiThread(java.lang.Runnable {
-                            ingredientItems.clear()
-                            ingredientItems.addAll(input.map { (if (it.severity == 1) "Warn" else "Hide") + " When Recipe " + (if (it.metric == null) "Contains" else ("Uses More Than " + it.amount + " " + it.metric + " Of")) + " " + it.ingredient })
-                            adapter1.notifyDataSetChanged()
-                        })
 
-                    })
             }
         }
 

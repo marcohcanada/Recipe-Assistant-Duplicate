@@ -58,12 +58,12 @@ class DiscoveryFragment : Fragment() {
 
         fun QueryMoreSuggestionsRecursive () {
             SuggestionsAPI().getGeneralSuggestion(activity?.getFilesDir()!!.path, index, fun(input:MutableList<DetailedRecipeCard>) {
-
-                recipeCards.addAll(input);
-                if(input.size == 0) {
+                if (input.size == 0) {
                     return
                 }
                 activity?.runOnUiThread(java.lang.Runnable {
+                    recipeCards.addAll(input);
+                    
                     recipeItems.clear()
                     authorItems.clear()
                     imgItems.clear()
@@ -74,34 +74,36 @@ class DiscoveryFragment : Fragment() {
                     ratingItems.clear()
                     warningsItems.clear()
                     SearchDetailStringItems.clear()
-                    var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
+                    var searchItems: Array<String> =
+                        binding.searchView.query!!.split(" ").toTypedArray()
                     for (i in 0..recipeCards.size - 1) {
                         var addFlag = true
                         for (j in 0..searchItems.size - 1) {
-                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                            if (searchItems[j] !in recipeCards[i].SearchDetailString) {
                                 addFlag = false
                             }
                         }
-                        if(addFlag) {
+                        if (addFlag) {
                             recipeItems.add(recipeCards[i].RecipeName)
                             authorItems.add(recipeCards[i].CreateUserName)
                             imgItems.add(recipeCards[i].RecipeImage)
                             imgTypeItems.add(recipeCards[i].RecipeImageType)
-                            likesItems.add( "Likes: " + recipeCards[i].Likes )
-                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
-                            viewsItems.add("Views: " + recipeCards[i].Views )
-                            ratingItems.add("Rating: " + recipeCards[i].Rating )
-                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
-                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+                            likesItems.add("Likes: " + recipeCards[i].Likes)
+                            dislikesItems.add("Dislikes: " + recipeCards[i].Dislikes)
+                            viewsItems.add("Views: " + recipeCards[i].Views)
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.toString().take(3))
+                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else "")
+                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString)
 
-                                recipeAdapter.notifyDataSetChanged()
+                            recipeAdapter.notifyDataSetChanged()
 
                         }
                     }
+                    index += 6
+                    QueryMoreSuggestionsRecursive()
                 })
-                QueryMoreSuggestionsRecursive()
             })
-            index+=6
+
         }
 
         if (index == 0) {
@@ -110,43 +112,45 @@ class DiscoveryFragment : Fragment() {
                 activity?.getFilesDir()!!.path,
                 index,
                 fun(input: MutableList<DetailedRecipeCard>) {
-                    recipeCards = input
-                    recipeItems.clear()
-                    authorItems.clear()
-                    imgItems.clear()
-                    imgTypeItems.clear()
-                    likesItems.clear()
-                    dislikesItems.clear()
-                    viewsItems.clear()
-                    ratingItems.clear()
-                    warningsItems.clear()
-                    SearchDetailStringItems.clear()
-                    var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
-                    for (i in 0..recipeCards.size - 1) {
-                        var addFlag = true
-                        for (j in 0..searchItems.size - 1) {
-                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
-                                addFlag = false
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        recipeCards = input
+                        recipeItems.clear()
+                        authorItems.clear()
+                        imgItems.clear()
+                        imgTypeItems.clear()
+                        likesItems.clear()
+                        dislikesItems.clear()
+                        viewsItems.clear()
+                        ratingItems.clear()
+                        warningsItems.clear()
+                        SearchDetailStringItems.clear()
+                        var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
+                        for (i in 0..recipeCards.size - 1) {
+                            var addFlag = true
+                            for (j in 0..searchItems.size - 1) {
+                                if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                                    addFlag = false
+                                }
+                            }
+                            if(addFlag) {
+                                recipeItems.add(recipeCards[i].RecipeName)
+                                authorItems.add(recipeCards[i].CreateUserName)
+                                imgItems.add(recipeCards[i].RecipeImage)
+                                imgTypeItems.add(recipeCards[i].RecipeImageType)
+                                likesItems.add( "Likes: " + recipeCards[i].Likes )
+                                dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                                viewsItems.add("Views: " + recipeCards[i].Views )
+                                ratingItems.add("Rating: " + recipeCards[i].Rating.toString().take(3) )
+                                warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                                SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+
+                                    recipeAdapter.notifyDataSetChanged()
+
                             }
                         }
-                        if(addFlag) {
-                            recipeItems.add(recipeCards[i].RecipeName)
-                            authorItems.add(recipeCards[i].CreateUserName)
-                            imgItems.add(recipeCards[i].RecipeImage)
-                            imgTypeItems.add(recipeCards[i].RecipeImageType)
-                            likesItems.add( "Likes: " + recipeCards[i].Likes )
-                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
-                            viewsItems.add("Views: " + recipeCards[i].Views )
-                            ratingItems.add("Rating: " + recipeCards[i].Rating )
-                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
-                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
-                            activity?.runOnUiThread(java.lang.Runnable {
-                                recipeAdapter.notifyDataSetChanged()
-                            })
-                        }
-                    }
-                    index += 6
-                    QueryMoreSuggestionsRecursive()
+                        index += 6
+                        QueryMoreSuggestionsRecursive()
+                    })
                 })
 
             /*var searchItems : Array<String> = binding.searchView.query!!.split(" ").toTypedArray()
@@ -188,78 +192,82 @@ class DiscoveryFragment : Fragment() {
                 if ((recipeCards.map { it.RecipeName }).contains(query)){
                     recipeAdapter.filter.filter(query)
                 }*/
-                recipeItems.clear()
-                authorItems.clear()
-                imgItems.clear()
-                imgTypeItems.clear()
-                likesItems.clear()
-                dislikesItems.clear()
-                viewsItems.clear()
-                ratingItems.clear()
-                warningsItems.clear()
-                SearchDetailStringItems.clear()
-                var searchItems : Array<String> = query!!.split(" ").toTypedArray()
-                for (i in 0..recipeCards.size - 1) {
-                    var addFlag = true
-                    for (j in 0..searchItems.size - 1) {
-                        if(searchItems[j] !in recipeCards[i].SearchDetailString) {
-                            addFlag = false
+                activity?.runOnUiThread(java.lang.Runnable {
+                    recipeItems.clear()
+                    authorItems.clear()
+                    imgItems.clear()
+                    imgTypeItems.clear()
+                    likesItems.clear()
+                    dislikesItems.clear()
+                    viewsItems.clear()
+                    ratingItems.clear()
+                    warningsItems.clear()
+                    SearchDetailStringItems.clear()
+                    var searchItems : Array<String> = query!!.split(" ").toTypedArray()
+                    for (i in 0..recipeCards.size - 1) {
+                        var addFlag = true
+                        for (j in 0..searchItems.size - 1) {
+                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                                addFlag = false
+                            }
+                        }
+                        if(addFlag) {
+                            recipeItems.add(recipeCards[i].RecipeName)
+                            authorItems.add(recipeCards[i].CreateUserName)
+                            imgItems.add(recipeCards[i].RecipeImage)
+                            imgTypeItems.add(recipeCards[i].RecipeImageType)
+                            likesItems.add( "Likes: " + recipeCards[i].Likes )
+                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                            viewsItems.add("Views: " + recipeCards[i].Views )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.toString().take(3))
+                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+
+                                recipeAdapter.notifyDataSetChanged()
+
                         }
                     }
-                    if(addFlag) {
-                        recipeItems.add(recipeCards[i].RecipeName)
-                        authorItems.add(recipeCards[i].CreateUserName)
-                        imgItems.add(recipeCards[i].RecipeImage)
-                        imgTypeItems.add(recipeCards[i].RecipeImageType)
-                        likesItems.add( "Likes: " + recipeCards[i].Likes )
-                        dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
-                        viewsItems.add("Views: " + recipeCards[i].Views )
-                        ratingItems.add("Rating: " + recipeCards[i].Rating )
-                        warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
-                        SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
-                        activity?.runOnUiThread(java.lang.Runnable {
-                            recipeAdapter.notifyDataSetChanged()
-                        })
-                    }
-                }
+                })
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                recipeItems.clear()
-                authorItems.clear()
-                imgItems.clear()
-                imgTypeItems.clear()
-                likesItems.clear()
-                dislikesItems.clear()
-                viewsItems.clear()
-                ratingItems.clear()
-                warningsItems.clear()
-                SearchDetailStringItems.clear()
-                var searchItems : Array<String> = newText!!.split(" ").toTypedArray()
-                for (i in 0..recipeCards.size - 1) {
-                    var addFlag = true
-                    for (j in 0..searchItems.size - 1) {
-                        if(searchItems[j] !in recipeCards[i].SearchDetailString) {
-                            addFlag = false
+                activity?.runOnUiThread(java.lang.Runnable {
+                    recipeItems.clear()
+                    authorItems.clear()
+                    imgItems.clear()
+                    imgTypeItems.clear()
+                    likesItems.clear()
+                    dislikesItems.clear()
+                    viewsItems.clear()
+                    ratingItems.clear()
+                    warningsItems.clear()
+                    SearchDetailStringItems.clear()
+                    var searchItems : Array<String> = newText!!.split(" ").toTypedArray()
+                    for (i in 0..recipeCards.size - 1) {
+                        var addFlag = true
+                        for (j in 0..searchItems.size - 1) {
+                            if(searchItems[j] !in recipeCards[i].SearchDetailString) {
+                                addFlag = false
+                            }
+                        }
+                        if(addFlag) {
+                            recipeItems.add(recipeCards[i].RecipeName)
+                            authorItems.add(recipeCards[i].CreateUserName)
+                            imgItems.add(recipeCards[i].RecipeImage)
+                            imgTypeItems.add(recipeCards[i].RecipeImageType)
+                            likesItems.add( "Likes: " + recipeCards[i].Likes )
+                            dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
+                            viewsItems.add("Views: " + recipeCards[i].Views )
+                            ratingItems.add("Rating: " + recipeCards[i].Rating.toString().take(3))
+                            warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
+                            SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
+
+                                recipeAdapter.notifyDataSetChanged()
+
                         }
                     }
-                    if(addFlag) {
-                        recipeItems.add(recipeCards[i].RecipeName)
-                        authorItems.add(recipeCards[i].CreateUserName)
-                        imgItems.add(recipeCards[i].RecipeImage)
-                        imgTypeItems.add(recipeCards[i].RecipeImageType)
-                        likesItems.add( "Likes: " + recipeCards[i].Likes )
-                        dislikesItems.add( "Dislikes: " + recipeCards[i].Dislikes )
-                        viewsItems.add("Views: " + recipeCards[i].Views )
-                        ratingItems.add("Rating: " + recipeCards[i].Rating )
-                        warningsItems.add(if (recipeCards[i].Severity == 1) "⚠ Warning ⚠" else ""  )
-                        SearchDetailStringItems.add(recipeCards[i].SearchDetailString )
-                        activity?.runOnUiThread(java.lang.Runnable {
-                            recipeAdapter.notifyDataSetChanged()
-                        })
-                    }
-                }
+                })
                 return false
             }
 
