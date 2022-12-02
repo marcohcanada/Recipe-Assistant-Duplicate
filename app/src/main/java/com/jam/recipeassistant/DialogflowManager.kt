@@ -20,7 +20,9 @@ class DialogflowManager: CoroutineScope {
     private var fragment: Fragment? = null
     private var client: SessionsClient? = null
     private var session: SessionName? = null
+    private var eventInput: EventInput? = null
     private var uuid: String = UUID.randomUUID().toString()
+    private val LANGUAGE_CODE = "en"
     private val TAG = "DialogflowManager"
 
     fun initAssistant(context: Context, fragment: Fragment) {
@@ -33,6 +35,12 @@ class DialogflowManager: CoroutineScope {
             val sessionsSettings = settingsBuilder.setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build()
             this.client = SessionsClient.create(sessionsSettings)!!
             this.session = (SessionName.of(projectId, uuid))!!
+            this.eventInput = EventInput.newBuilder().setName("WELCOME").setLanguageCode(LANGUAGE_CODE).build()
+            val response = this.client!!.detectIntent(this.session!!, QueryInput.newBuilder().setEvent(eventInput).build())
+            val botMessage = GoogleAssistantResponseMessages.ResponseBasicCard()
+            botMessage.formattedText = response.queryResult.fulfillmentText
+            Log.d(TAG, "Recipe Assistant Response: ${botMessage.formattedText}")
+            (fragment as ChatBotFragment).showTextView(botMessage.formattedText, 1002)
             Log.d(TAG, "projectId: $projectId")
         } catch (e: Exception) {
             e.printStackTrace()
@@ -91,7 +99,6 @@ class DialogflowManager: CoroutineScope {
             Log.d(TAG, "doInBackground: ${e.message}")
             return@withContext null
         }
-
     }
 
     fun execute(queryInput: QueryInput) = launch {
