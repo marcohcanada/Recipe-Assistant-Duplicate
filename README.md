@@ -4,3 +4,6 @@ The Recipe Assistant is an application that aims to help a user find recipes wit
 The API for the Android application is currently offline, though a demo of the project recorded in its intended state with the API being online is linked below.
 ## Video Demo
 https://youtu.be/Uf5z0TqA124
+## System Components
+### Azure Virtual Machine Server
+We have purchased and configured a Windows Server 2018 environment that is hosting the System Components that need to stay active and accessible. This includes the Microsoft SQL Server, .NET 6 API, and Python Machine learning scripts.
