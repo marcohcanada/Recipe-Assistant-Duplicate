@@ -10,3 +10,7 @@ https://youtu.be/Uf5z0TqA124
 - We have created our own custom API in .NET 6. This API uses a separate Entity Framework project to connect with the Database. Models in the “EFDataAccess” project are 1:1 with the Database and pull into the application. Within the Recipe Assistant API project there are controllers that contain all the methods for endpoints that can be called, and the models contain the objects that received and sent JSON is converted to.
 ### Android
 Our application is coded in Kotlin to run on Android 8.0+ (API 26+).
+### Google Crashlytics
+Crashlytics while in development can help us identify recurring crash points where we may designate them as bugs to be addressed. During release we will have many users using the app. If our users would have an issue in the app then a log will be pushed to Crashlytics. Here we can monitor the health of our application as well as address any point that users are frequently crashing on.
+### Google Ad Mob
+For Monetization we have integrated Google Ad Mob into the app. This component allows us to post a wide variety of ads into the ad to. Through impressions we can receive an amount of revenue within our app. Though the app uses nonproducing test ads due to policy reasons, we can hope to gain some revenue to pay for sever and other costs with a wide userbase.
