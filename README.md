@@ -8,3 +8,5 @@ https://youtu.be/Uf5z0TqA124
 ### Azure Virtual Machine Server
 - We have purchased and configured a Windows Server 2018 environment that is hosting the System Components that need to stay active and accessible. This includes the Microsoft SQL Server, .NET 6 API, and Python Machine learning scripts.
 - We have created our own custom API in .NET 6. This API uses a separate Entity Framework project to connect with the Database. Models in the “EFDataAccess” project are 1:1 with the Database and pull into the application. Within the Recipe Assistant API project there are controllers that contain all the methods for endpoints that can be called, and the models contain the objects that received and sent JSON is converted to.
+### Android
+Our application is coded in Kotlin to run on Android 8.0+ (API 26+).
